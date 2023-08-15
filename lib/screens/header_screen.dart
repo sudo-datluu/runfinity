@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:runfinity/screens/lobby_screens/color.dart';
+import 'package:runfinity/styles/app_colors.dart';
 
 class HeaderScreen extends StatefulWidget implements PreferredSizeWidget {
   HeaderScreen({
@@ -34,7 +34,7 @@ class _HeaderScreenState extends State<HeaderScreen> {
           hintText: "Search...",
           hintStyle: TextStyle(color: Colors.white),
           filled: true,
-          fillColor: LobbyColor.ButtonColor,
+          fillColor: AppColors.primary,
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -47,10 +47,13 @@ class _HeaderScreenState extends State<HeaderScreen> {
           onPressed: (){
 
           },
-          child: Icon(Icons.more_horiz),
+          child: Icon(
+            Icons.more_horiz,
+            color: Colors.white,
+          ),
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            backgroundColor: LobbyColor.ButtonColor,
+            backgroundColor: AppColors.primary,
             side: BorderSide.none,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(200)),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:runfinity/screens/header_screen.dart';
-import 'package:runfinity/screens/lobby_screens/create_lobby_screen.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-
-      home: CreateLobbyScreen(),
+      home: LobbyScreen(),
     );
   }
 }
