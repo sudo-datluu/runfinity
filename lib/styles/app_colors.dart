@@ -8,6 +8,8 @@ class AppColors {
   static const primaryDarker = Color(0xff3033ad);
   static const primaryContrast = Color(0xffffffff);
 
+  static const background = Color.fromRGBO(40, 51, 63, 1);
+
   static const secondary = Color(0xfff14985);
   static const text = Color(0xff121826);
   
