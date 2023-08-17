@@ -8,11 +8,11 @@ class AppColors {
   static const primaryDarker = Color(0xff3033ad);
   static const primaryContrast = Color(0xffffffff);
 
-  static const background = Color.fromRGBO(40, 51, 63, 1);
+  static const background = Color(0xFF28333F);
 
   static const secondary = Color(0xfff14985);
   static const text = Color(0xff121826);
-  
+
   static const destructive = Color(0xffFC0703);
   static const destructiveLighter = Color(0xffffe6e6);
   static const destructiveLight = Color(0xfffe9c9a);
@@ -24,12 +24,12 @@ class AppColors {
   static const successLight = Color(0xff8de5ab);
   static const successDark = Color(0xff3e784c);
   static const successDarker = Color(0xff305e3e);
-  
-  static const alert = Color(0xffe99437); 
-  static const alertLighter = Color(0xfffefaed); 
-  static const alertLight = Color(0xfff2c962); 
-  static const alertDark = Color(0xffa84d20); 
-  static const alertDarker = Color(0xff713218); 
+
+  static const alert = Color(0xffe99437);
+  static const alertLighter = Color(0xfffefaed);
+  static const alertLight = Color(0xfff2c962);
+  static const alertDark = Color(0xffa84d20);
+  static const alertDarker = Color(0xff713218);
 
   static const neutral50 = Color(0xfff9fafb);
   static const neutral100 = Color(0xfff3f4f7);
@@ -38,5 +38,6 @@ class AppColors {
   static const neutral500 = Color(0xff677083);
   static const neutral600 = Color(0xff495465);
   static const neutral700 = Color(0xff364052);
+  static const neutral750 = Color(0xFF2F3C50);
   static const neutral800 = Color(0xff1f2937);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/styles/app_colors.dart';
 
 // ignore: must_be_immutable
 class LoginInput extends StatelessWidget {
@@ -23,10 +24,10 @@ class LoginInput extends StatelessWidget {
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             filled: true,
-            fillColor: const Color.fromRGBO(47, 60, 80, 1),
+            fillColor: AppColors.neutral750,
             border: OutlineInputBorder(
               borderSide:
-                  const BorderSide(color: Color.fromRGBO(123, 97, 255, 1)),
+                  const BorderSide(color: AppColors.primary),
               borderRadius: BorderRadius.circular(8),
             ),
             hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),

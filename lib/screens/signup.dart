@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/appText.dart';
 import 'package:runfinity/widgets/formValidation.dart';
 import 'package:runfinity/widgets/loginInput.dart';
@@ -28,7 +29,7 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-            color: const Color.fromRGBO(40, 51, 63, 1),
+            color: AppColors.primaryDarker,
             padding: const EdgeInsets.only(top: 25, bottom: 25),
             child: Column(
               children: [
@@ -100,8 +101,7 @@ class _SignUpState extends State<SignUp> {
                                       borderRadius: BorderRadius.circular(15),
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color.fromRGBO(
-                                              123, 97, 255, 1),
+                                          backgroundColor: AppColors.neutral750 ,
                                           elevation: 0,
                                         ),
                                         onPressed: () {
@@ -137,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                           AppText(
                             text: 'Log In',
-                            color: const Color.fromRGBO(102, 126, 252, 1),
+                            color: AppColors.primary,
                           )
                         ],
                       )

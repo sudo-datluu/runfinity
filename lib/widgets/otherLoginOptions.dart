@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/appText.dart';
 
 class OtherLoginOptions extends StatelessWidget {
@@ -13,22 +14,22 @@ class OtherLoginOptions extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                color: const Color.fromRGBO(75, 87, 107, 1),
+                color: AppColors.neutral600,
                 height: 1,
                 width: 30,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               child: AppText(
                 text: 'Or continue with',
                 size: 12,
-                color: const Color.fromRGBO(75, 87, 107, 1),
+                color: AppColors.neutral600,
               ),
             ),
             Expanded(
               child: Container(
-                color: const Color.fromRGBO(75, 87, 107, 1),
+                color: AppColors.neutral600,
                 height: 1,
                 width: 30,
               ),
@@ -45,9 +46,9 @@ class OtherLoginOptions extends StatelessWidget {
               width: 98,
               height: 72,
               decoration: BoxDecoration(
-                color: const Color.fromRGBO(47, 60, 80, 1),
+                color: AppColors.neutral750,
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: const Color.fromRGBO(75, 87, 107, 1)),
+                border: Border.all(color: AppColors.neutral600),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3), 
@@ -63,20 +64,20 @@ class OtherLoginOptions extends StatelessWidget {
               width: 98,
               height: 72,
               decoration: BoxDecoration(
-                  color: const Color.fromRGBO(47, 60, 80, 1),
+                  color: AppColors.neutral750,
                   borderRadius: BorderRadius.circular(15),
                   border:
-                      Border.all(color: const Color.fromRGBO(75, 87, 107, 1))),
+                      Border.all(color: AppColors.neutral600)),
               child: Center(child: Image.asset('images/facebook.png')),
             ),
             Container(
               width: 98,
               height: 72,
               decoration: BoxDecoration(
-                  color: const Color.fromRGBO(47, 60, 80, 1),
+                  color: AppColors.neutral750,
                   borderRadius: BorderRadius.circular(15),
                   border:
-                      Border.all(color: const Color.fromRGBO(75, 87, 107, 1))),
+                      Border.all(color: AppColors.neutral600)),
               child: Center(child: Image.asset('images/twitter.png')),
             )
           ],

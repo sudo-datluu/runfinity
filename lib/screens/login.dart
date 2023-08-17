@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: AppColors.background ,
+        color: AppColors.background,
         padding: const EdgeInsets.only(top: 25),
         child: Column(
           children: [
