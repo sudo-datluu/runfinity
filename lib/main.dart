@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LobbyScreen(),
+      home: LobbyChatScreen(),
     );
   }
 }

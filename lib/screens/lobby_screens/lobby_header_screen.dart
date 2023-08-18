@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
-class HeaderScreen extends StatefulWidget implements PreferredSizeWidget {
-  HeaderScreen({
+class LobbyHeaderScreen extends StatefulWidget implements PreferredSizeWidget {
+  LobbyHeaderScreen({
     super.key,
-    required this.textEditingController
+    required this.textEditingController,
+    required this.onPressedBackButton,
   });
 
   TextEditingController textEditingController;
+  VoidCallback onPressedBackButton;
 
   @override
-  State<HeaderScreen> createState() => _HeaderScreenState();
+  State<LobbyHeaderScreen> createState() => _LobbyHeaderScreenState();
 
   @override
   // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(60);
 }
 
-class _HeaderScreenState extends State<HeaderScreen> {
+class _LobbyHeaderScreenState extends State<LobbyHeaderScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,10 @@ class _HeaderScreenState extends State<HeaderScreen> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       titleSpacing: 0,
-      leading: Icon(Icons.arrow_back),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: widget.onPressedBackButton,
+      ),
       title: TextFormField(
         controller: widget.textEditingController,
         decoration: const InputDecoration(

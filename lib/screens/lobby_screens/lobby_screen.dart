@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:runfinity/screens/header_screen.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_header_screen.dart';
 import 'package:runfinity/screens/lobby_screens/widgets/create_lobby_screen.dart';
 import 'package:runfinity/screens/lobby_screens/widgets/find_lobby_screen.dart';
 
@@ -22,8 +22,15 @@ class _LobbyScreenState extends State<LobbyScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: AppColors.neutral700,
-      appBar: HeaderScreen(
+      appBar: LobbyHeaderScreen(
         textEditingController: searchTextEditingController,
+        onPressedBackButton: (){
+          if (isCreatingLobby) {
+            setState(() {
+              isCreatingLobby = false;
+            });
+          }
+        },
       ),
       body: SizedBox.expand(
         child: isCreatingLobby

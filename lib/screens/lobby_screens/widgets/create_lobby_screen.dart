@@ -32,7 +32,7 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
                   const SizedBox(height: 5,),
                   const Center(
                     child: Icon(
-                      Icons.maximize_rounded,
+                      Icons.arrow_drop_down,
                       color: Colors.white,
                       size: 40,
                     ),
