@@ -36,5 +36,6 @@ class AppColors {
   static const neutral500 = Color(0xff677083);
   static const neutral600 = Color(0xff495465);
   static const neutral700 = Color(0xff364052);
+    static const neutral750 = Color(0xFF2F3C50);
   static const neutral800 = Color(0xff1f2937);
 }

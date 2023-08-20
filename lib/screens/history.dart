@@ -139,7 +139,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 decoration: BoxDecoration(
-                  color: AppColors.neutral800,
+                  color: AppColors.neutral750,
                   border: Border.all(color: AppColors.neutral600),
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -180,9 +180,18 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
                     Row(
                       children: [
-                        AppText(text: '11,120', fontWeight: FontWeight.w700, size: 22,),
-                        const SizedBox(width: 5,),
-                        AppText(text: 'Steps', size: 17,)
+                        AppText(
+                          text: '11,120',
+                          fontWeight: FontWeight.w700,
+                          size: 22,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        AppText(
+                          text: 'Steps',
+                          size: 17,
+                        )
                       ],
                     )
                   ],
