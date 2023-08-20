@@ -9,6 +9,7 @@ class AppColors {
   static const primaryContrast = Color(0xffffffff);
 
   static const secondary = Color(0xfff14985);
+  static const purple = Color(0xFFC258F3);
   static const text = Color(0xff121826);
   
   static const destructive = Color(0xffFC0703);
@@ -36,5 +37,6 @@ class AppColors {
   static const neutral500 = Color(0xff677083);
   static const neutral600 = Color(0xff495465);
   static const neutral700 = Color(0xff364052);
+  static const neutral750 = Color(0xFF28333F);
   static const neutral800 = Color(0xff1f2937);
 }
