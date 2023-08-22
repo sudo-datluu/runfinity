@@ -1,8 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widget/appText.dart';
-import 'package:runfinity/widget/customSwitch.dart';
+import 'package:runfinity/widgets/appText.dart';
+import 'package:runfinity/widgets/customSwitch.dart';
 
 class ProfileMenu extends StatefulWidget {
   const ProfileMenu({super.key});
@@ -22,7 +22,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.neutral750,
+            color: AppColors.neutral770,
             border: Border.all(color: AppColors.neutral600),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -45,7 +45,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.neutral750,
+            color: AppColors.neutral770,
             border: Border.all(color: AppColors.neutral600),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -68,7 +68,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.neutral750,
+            color: AppColors.neutral770,
             border: Border.all(color: AppColors.neutral600),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -91,7 +91,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.neutral750,
+            color: AppColors.neutral770,
             border: Border.all(color: AppColors.neutral600),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -117,7 +117,7 @@ class _ProfileMenuState extends State<ProfileMenu> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.neutral750,
+            color: AppColors.neutral770,
             border: Border.all(color: AppColors.neutral600),
             borderRadius: BorderRadius.circular(15),
           ),
