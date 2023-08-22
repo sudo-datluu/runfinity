@@ -42,3 +42,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# python development ignores file
+*.pyc
+__pycache__
+db.sqlite3
+/env
+*.env
+.vscode

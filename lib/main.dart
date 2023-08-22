@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:runfinity/loadRunningModal.dart';
+import 'package:runfinity/widgets/loadRunningModal.dart';
 
 void main() {
   runApp(const MyApp());
