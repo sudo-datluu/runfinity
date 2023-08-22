@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:runfinity/screens/login.dart';
+import 'package:runfinity/screens/history.dart';
+// import 'package:runfinity/screens/login.dart';
 // import 'package:runfinity/screens/signup.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false, //turn off default debug mode
       title: 'App',
-      home: Login(),
+      home: HistoryPage(),
     );
   }
 }
