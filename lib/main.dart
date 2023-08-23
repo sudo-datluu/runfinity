@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
-
+import 'package:flutter/services.dart';
+import 'package:runfinity/screens/login.dart';
+// import 'package:runfinity/screens/signup.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -21,4 +23,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+//     SystemChrome.setSystemUIOverlayStyle(
+//         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        
+//     return const MaterialApp(
+//       debugShowCheckedModeBanner: false, //turn off default debug mode
+//       title: 'App',
+//       home: Login(),
+//     );
+//   }
+// }
