@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:runfinity/screens/profile.dart';
+import 'package:runfinity/screens/history.dart';
+// import 'package:runfinity/screens/login.dart';
+// import 'package:runfinity/screens/signup.dart';
 
 void main() {
   runApp(const MyApp());
