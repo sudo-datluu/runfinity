@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:runfinity/screens/login.dart';
 // import 'package:runfinity/screens/signup.dart';
@@ -13,13 +15,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-        
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false, //turn off default debug mode
-      title: 'App',
-      home: Login(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      home: LobbyChatScreen(),
     );
   }
 }
+
+//     SystemChrome.setSystemUIOverlayStyle(
+//         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        
+//     return const MaterialApp(
+//       debugShowCheckedModeBanner: false, //turn off default debug mode
+//       title: 'App',
+//       home: Login(),
+//     );
+//   }
+// }
