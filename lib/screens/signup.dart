@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/widgets/formValidation.dart';
-import 'package:runfinity/widgets/loginInput.dart';
-import 'package:runfinity/widgets/loginPasswordInput.dart';
-import 'package:runfinity/widgets/otherLoginOptions.dart';
+import 'package:runfinity/utils/formValidation.dart';
+import 'package:runfinity/widgets/login/loginInput.dart';
+import 'package:runfinity/widgets/login/loginPasswordInput.dart';
+import 'package:runfinity/widgets/login/otherLoginOptions.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
