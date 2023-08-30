@@ -25,6 +25,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: AppColors.background,
         padding: const EdgeInsets.only(top: 25),
