@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
+import 'package:runfinity/utils/api_service.dart';
 import 'package:runfinity/widgets/appText.dart';
 import 'package:runfinity/utils/formValidation.dart';
 import 'package:runfinity/widgets/login/loginCheckBox.dart';
@@ -23,8 +24,16 @@ class _LoginState extends State<Login> {
   final FormValidation _formValidation = FormValidation();
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+  
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: AppColors.background,
         padding: const EdgeInsets.only(top: 25),
@@ -61,7 +70,7 @@ class _LoginState extends State<Login> {
                             LoginInput(
                               inputController: _usernameController,
                               hintText: "Username",
-                              validate: _formValidation.validateUserName,
+                              // validate: _formValidation.valida,
                             ),
                             LoginPasswordInput(
                               passwordController: _passwordController,
@@ -98,7 +107,7 @@ class _LoginState extends State<Login> {
                                         onPressed: () {
                                           final isValidForm = _formKey.currentState!.validate();
                                           if (isValidForm) {
-
+                                            login();
                                           } 
                                         },
                                         child: AppText(
@@ -138,5 +147,9 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+  
+  void login() {
+    ApiService.postData('auth/login');
   }
 }
