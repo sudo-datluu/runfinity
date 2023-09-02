@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:runfinity/screens/signup.dart';
+import 'package:runfinity/services/auth_services.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/utils/api_service.dart';
 import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/utils/formValidation.dart';
+import 'package:runfinity/utils/form_validation.dart';
 import 'package:runfinity/widgets/login/loginCheckBox.dart';
 import 'package:runfinity/widgets/login/loginInput.dart';
 import 'package:runfinity/widgets/login/loginPasswordInput.dart';
@@ -24,11 +26,11 @@ class _LoginState extends State<Login> {
   final FormValidation _formValidation = FormValidation();
 
   @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-  
+  void dispose() {
+    super.dispose();
+    _usernameController.clear();
+    _passwordController.clear();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +41,9 @@ class _LoginState extends State<Login> {
         padding: const EdgeInsets.only(top: 25),
         child: Column(
           children: [
-            const Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                )),
+            const SizedBox(
+              height: 70,
+            ),
             Container(
                 padding: const EdgeInsets.only(left: 32, right: 32, top: 16),
                 child: Column(
@@ -70,7 +65,7 @@ class _LoginState extends State<Login> {
                             LoginInput(
                               inputController: _usernameController,
                               hintText: "Username",
-                              // validate: _formValidation.valida,
+                              validate: _formValidation.validateEmpty,
                             ),
                             LoginPasswordInput(
                               passwordController: _passwordController,
@@ -105,10 +100,12 @@ class _LoginState extends State<Login> {
                                           elevation: 0,
                                         ),
                                         onPressed: () {
-                                          final isValidForm = _formKey.currentState!.validate();
+                                          final isValidForm =
+                                              _formKey.currentState!.validate();
                                           if (isValidForm) {
-                                            login();
-                                          } 
+                                            login(_usernameController.text,
+                                                _passwordController.text);
+                                          }
                                         },
                                         child: AppText(
                                           text: "Log In",
@@ -135,9 +132,18 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           width: 4,
                         ),
-                        AppText(
-                          text: 'Sign Up',
-                          color: AppColors.primary,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: const SignUp(),
+                                    type: PageTransitionType.fade));
+                          },
+                          child: AppText(
+                            text: 'Sign Up',
+                            color: AppColors.primary,
+                          ),
                         )
                       ],
                     )
@@ -148,8 +154,9 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-  
-  void login() {
-    ApiService.postData('auth/login');
+
+  void login(String username, String password) {
+    final body = {"username": username, "password": password};
+    AuthServices.loginService(body);
   }
 }

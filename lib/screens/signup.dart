@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/utils/formValidation.dart';
+import 'package:runfinity/utils/form_validation.dart';
 import 'package:runfinity/widgets/login/loginInput.dart';
 import 'package:runfinity/widgets/login/loginPasswordInput.dart';
 import 'package:runfinity/widgets/login/otherLoginOptions.dart';
@@ -25,24 +27,26 @@ class _SignUpState extends State<SignUp> {
   final FormValidation _formValidation = FormValidation();
 
   @override
+  void dispose() {
+    super.dispose();
+    _nameController.clear();
+    _usernameController.clear();
+    _phoneController.clear();
+    _mailController.clear();
+    _passwordController.clear();
+    _confirmPasswordController.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Container(
-            color: AppColors.primaryDarker,
-            padding: const EdgeInsets.only(top: 25, bottom: 25),
+            color: AppColors.background,
+            padding: const EdgeInsets.only(bottom: 25),
             child: Column(
               children: [
-                const Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                    )),
                 Container(
                   padding: const EdgeInsets.only(left: 32, right: 32, top: 16),
                   child: Column(
@@ -101,7 +105,7 @@ class _SignUpState extends State<SignUp> {
                                       borderRadius: BorderRadius.circular(15),
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: AppColors.neutral750 ,
+                                          backgroundColor: AppColors.primary,
                                           elevation: 0,
                                         ),
                                         onPressed: () {
@@ -135,9 +139,18 @@ class _SignUpState extends State<SignUp> {
                           const SizedBox(
                             width: 4,
                           ),
-                          AppText(
-                            text: 'Log In',
-                            color: AppColors.primary,
+                          GestureDetector(
+                            onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: const Login(),
+                                    type: PageTransitionType.fade));
+                          },
+                            child: AppText(
+                              text: 'Log In',
+                              color: AppColors.primary,
+                            ),
                           )
                         ],
                       )
