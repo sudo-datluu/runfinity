@@ -12,13 +12,6 @@ class AuthServices {
 
       if (res.statusCode == 200) {
         localStorage.setItem('firstLogin', true);
-
-        final json = jsonDecode(res.body);
-
-        if (json['code'] == 0) {
-          var token = json['data']['access'];
-          print(token);
-        }
       } else {
         print('Login failed');
         print('res: ${res.statusCode}');
