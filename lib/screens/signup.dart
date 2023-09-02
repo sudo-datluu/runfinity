@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:runfinity/controllers/auth/signup_controller.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/appText.dart';
@@ -16,26 +18,11 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final _nameController = TextEditingController();
-  final _usernameController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _mailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   final FormValidation _formValidation = FormValidation();
 
-  @override
-  void dispose() {
-    super.dispose();
-    _nameController.clear();
-    _usernameController.clear();
-    _phoneController.clear();
-    _mailController.clear();
-    _passwordController.clear();
-    _confirmPasswordController.clear();
-  }
+  final _signupController = Get.put(SignupController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,32 +51,32 @@ class _SignUpState extends State<SignUp> {
                         child: Column(
                           children: [
                             LoginInput(
-                              inputController: _usernameController,
+                              inputController: _signupController.usernameController,
                               hintText: 'Username',
+                              validate: _formValidation.validateEmpty,
+                            ),
+                            LoginInput(
+                              inputController: _signupController.nameController,
+                              hintText: "Full name",
                               validate: _formValidation.validateFullName,
                             ),
                             LoginInput(
-                              inputController: _nameController,
-                              hintText: "Full name",
-                              validate: _formValidation.validateUserName,
-                            ),
-                            LoginInput(
-                              inputController: _mailController,
+                              inputController: _signupController.mailController,
                               hintText: "Email",
-                              validate: _formValidation.validateMail,
+                              // validate: _formValidation.validateMail,
                             ),
                             LoginInput(
-                              inputController: _phoneController,
+                              inputController: _signupController.phoneController,
                               hintText: "Phone number",
-                              validate: _formValidation.validatePhone,
+                              // validate: _formValidation.validatePhone,
                             ),
                             LoginPasswordInput(
-                              passwordController: _passwordController,
+                              passwordController: _signupController.passwordController,
                               hintText: "Password",
                               validate: _formValidation.validatePassword,
                             ),
                             LoginPasswordInput(
-                              passwordController: _confirmPasswordController,
+                              passwordController: _signupController.confirmPasswordController,
                               hintText: "Confirm Password",
                               validate: _formValidation.validateCfPassword,
                             ),
@@ -111,7 +98,9 @@ class _SignUpState extends State<SignUp> {
                                         onPressed: () {
                                           final isValidForm =
                                               _formKey.currentState!.validate();
-                                          if (isValidForm) {}
+                                          if (isValidForm) {
+                                            _signupController.signupService();
+                                          }
                                         },
                                         child: AppText(
                                           text: "Sign Up",

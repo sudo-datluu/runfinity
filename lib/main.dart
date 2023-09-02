@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false, 
       title: 'App',
       theme: ThemeData(
