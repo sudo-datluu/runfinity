@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //turn off default debug mode
       title: 'App',
-      home: LoadRunningModal(isLoadRun: true,),
+      home: LoadRunningModal(isLoadRun:true,),
     );
   }
 }
