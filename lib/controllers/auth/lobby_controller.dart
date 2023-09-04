@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:runfinity/utils/api_services.dart';
 import 'package:runfinity/widgets/appText.dart';
 
-class Lobby_Controller extends GetxController {
+class LobbyController extends GetxController {
   TextEditingController locationAddressEditingController = TextEditingController();
   TextEditingController limitMemberEditingController = TextEditingController();
   TextEditingController lobbyNameEditingController = TextEditingController();
