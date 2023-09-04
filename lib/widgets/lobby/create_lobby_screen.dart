@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/controllers/auth/lobby_controller.dart';
 
 import '../../../styles/app_colors.dart';
 
@@ -12,6 +14,7 @@ class CreateLobbyScreen extends StatefulWidget {
 class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
 
   final TextEditingController searchTextEditingController = TextEditingController();
+  final _lobbyController = Get.put(Lobby_Controller());
 
   @override
   Widget build(BuildContext context) {

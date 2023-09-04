@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_header_screen.dart';
-import 'package:runfinity/screens/widgets/lobby_widgets/create_lobby_screen.dart';
-
 import '../../../styles/app_colors.dart';
-import '../widgets/lobby_widgets/find_lobby_screen.dart';
+import '../../widgets/lobby/create_lobby_screen.dart';
+import '../../widgets/lobby/find_lobby_screen.dart';
+
 
 class LobbyScreen extends StatefulWidget {
   const LobbyScreen({super.key});
