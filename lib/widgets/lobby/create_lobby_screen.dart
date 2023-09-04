@@ -25,7 +25,7 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
         maxChildSize: 0.85,
 
         builder: (BuildContext context, ScrollController scrollController){
-          return GetX<LobbyController>(
+          return GetBuilder<LobbyController>(
             builder: (controller) {
               return Container(
                 color: AppColors.neutral800,
@@ -133,6 +133,7 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
+                          controller: controller.limitMemberEditingController,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                           ),
@@ -146,7 +147,9 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
                             elevation: 0,
                             minimumSize: const Size.fromHeight(50),
                           ),
-                          onPressed: (){},
+                          onPressed: (){
+                            _lobbyController.CreateLobbyService();
+                          },
                           child: const Text(
                             "Create",
                             style: TextStyle(
