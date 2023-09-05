@@ -50,4 +50,4 @@ db.sqlite3
 /env
 *.env
 .vscode
-./backend/djangoenv
+./djangoenv
