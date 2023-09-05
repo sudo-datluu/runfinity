@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/widgets/history/historyRunCard.dart';
-import 'package:runfinity/widgets/history/historyStatBar.dart';
+import 'package:runfinity/widgets/app_text.dart';
+import 'package:runfinity/widgets/history/history_run_card.dart';
+import 'package:runfinity/widgets/history/history_stat_bar.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:runfinity/screens/widgets/lobby_widgets/lobby_chat_messages.dart';
+import 'package:runfinity/widgets/lobby/lobby_chat_messages.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
-import '../widgets/lobby_widgets/lobby_chat_message_input.dart';
+import '../../widgets/lobby/lobby_chat_message_input.dart';
 
 class LobbyChatScreen extends StatefulWidget {
   const LobbyChatScreen({super.key});

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
-class LoginCheckbox extends StatefulWidget {
-  const LoginCheckbox({super.key});
+class CheckBox extends StatefulWidget {
+  const CheckBox({super.key});
 
   @override
-  State<LoginCheckbox> createState() => _LoginCheckboxState();
+  State<CheckBox> createState() => _CheckBoxState();
 }
 
-class _LoginCheckboxState extends State<LoginCheckbox> {
+class _CheckBoxState extends State<CheckBox> {
   bool isChecked = false;
 
   @override
