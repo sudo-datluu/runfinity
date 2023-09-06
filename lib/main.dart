@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:runfinity/widgets/loadRunningModal.dart';
 
 void main() {
@@ -12,13 +14,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  Future<String?> getAccessToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+
+    return token;
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       title: 'App',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
@@ -32,7 +41,19 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const Login(),
+      home: FutureBuilder<String?>(
+          future: getAccessToken(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              final token = snapshot.data;
+              
+              return token != null ? const LobbyScreen() : const Login();
+            }
+          }),
     );
   }
 }

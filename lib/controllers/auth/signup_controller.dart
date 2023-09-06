@@ -33,6 +33,8 @@ class SignupController extends GetxController {
         var token = jsonResponse['access'];
 
         final SharedPreferences prefs = await _prefs;
+
+        await prefs.setBool('firstLogin', true);
         await prefs.setString('token', token);
 
         nameController.clear();
