@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
+import 'package:runfinity/screens/home_page.dart';
 import 'package:runfinity/screens/login.dart';
+import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:runfinity/widgets/loadRunningModal.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
             } else {
               final token = snapshot.data;
               
-              return token != null ? const LobbyScreen() : const Login();
+              return token != null ? MainPage() : const Login();
             }
           }),
     );

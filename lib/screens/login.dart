@@ -62,12 +62,12 @@ class _LoginState extends State<Login> {
                         child: Column(
                           children: [
                             LoginInput(
-                              inputController: _usernameController,
+                              inputController: _loginController.usernameController,
                               hintText: "Username",
                               validate: _formValidation.validateUserName,
                             ),
                             LoginPasswordInput(
-                              passwordController: _passwordController,
+                              passwordController: _loginController.passwordController,
                               hintText: "Password",
                               validate: _formValidation.validatePassword,
                             ),
@@ -87,84 +87,68 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                             Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Row(
-                                    children: [
-                                      const LoginCheckbox(),
-                                      AppText(text: 'Remember Me')
-                                    ],
-                                  ),
-                                  AppText(
-                                    text: 'Forgot Password ?',
-                                    color: AppColors.primary,
-                                  )
-                                ],
-                              ),
-                              Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    SizedBox(
-                                      height: 56,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(15),
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: AppColors.primary,
-                                            elevation: 0,
-                                          ),
-                                          onPressed: () {
-                                            final isValidForm = _formKey
-                                                .currentState!
-                                                .validate();
-                                            if (isValidForm) {
-                                              _loginController.loginService();
-                                            }
-                                          },
-                                          child: AppText(
-                                            text: "Log In",
-                                            size: 20,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                SizedBox(
+                                  height: 56,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.primary,
+                                        elevation: 0,
+                                      ),
+                                      onPressed: () {
+                                        final isValidForm = _formKey
+                                            .currentState!
+                                            .validate();
+                                        if (isValidForm) {
+                                          _loginController.loginService();
+                                        }
+                                      },
+                                      child: AppText(
+                                        text: "Log In",
+                                        size: 20,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                  ]),
-                            ],
-                          )),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const OtherLoginOptions(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AppText(text: 'New User?'),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      child: const SignUp(),
-                                      type: PageTransitionType.fade));
-                            },
-                            child: AppText(
-                              text: 'Sign Up',
-                              color: AppColors.primary,
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
-                        ],
-                      )
-                    ],
-                  ));
-            }),
+                          ],
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const OtherLoginOptions(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AppText(text: 'New User?'),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: const SignUp(),
+                                    type: PageTransitionType.fade));
+                          },
+                          child: AppText(
+                            text: 'Sign Up',
+                            color: AppColors.primary,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                )),
           ],
         ),
       ),

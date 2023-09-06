@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
+import 'package:runfinity/screens/home_page.dart';
 import 'package:runfinity/utils/api_services.dart';
-import 'package:runfinity/widgets/appText.dart';
+import 'package:runfinity/widgets/app_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
@@ -32,7 +32,7 @@ class LoginController extends GetxController {
         usernameController.clear();
         passwordController.clear();
 
-        Get.off(const LobbyScreen());
+        Get.off(const HomePage());
       } else {
         throw jsonDecode(res.body)["msg"] ?? "Unknown Error Occured";
       }
