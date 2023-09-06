@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:runfinity/screens/login.dart';
-// import 'package:runfinity/screens/signup.dart';
+import 'package:runfinity/styles/app_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:runfinity/widgets/loadRunningModal.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,16 +14,46 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  Future<String?> getAccessToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+
+    return token;
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-        
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false, //turn off default debug mode
+
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'App',
-      home: Login(),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          backgroundColor: AppColors.background,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+          elevation: 0,
+        ),
+      ),
+      home: FutureBuilder<String?>(
+          future: getAccessToken(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              final token = snapshot.data;
+              
+              return token != null ? const LobbyScreen() : const Login();
+            }
+          }),
     );
   }
 }
