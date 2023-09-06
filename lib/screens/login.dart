@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
                             LoginInput(
                               inputController: _loginController.usernameController,
                               hintText: "Username",
-                              validate: _formValidation.validateUserName,
+                              validate: _formValidation.validateEmpty,
                             ),
                             LoginPasswordInput(
                               passwordController: _loginController.passwordController,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:runfinity/screens/home_page.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/styles/app_colors.dart';
@@ -51,7 +50,7 @@ class MyApp extends StatelessWidget {
             } else {
               final token = snapshot.data;
               
-              return token != null ? MainPage() : const Login();
+              return token != null ? const MainPage() : const Login();
             }
           }),
     );
