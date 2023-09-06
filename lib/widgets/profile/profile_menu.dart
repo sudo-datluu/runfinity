@@ -1,8 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/widgets/customSwitch.dart';
+import 'package:runfinity/widgets/app_text.dart';
+import 'package:runfinity/widgets/custom_switch.dart';
 
 class ProfileMenu extends StatefulWidget {
   const ProfileMenu({super.key});

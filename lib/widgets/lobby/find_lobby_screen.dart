@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:runfinity/screens/widgets/lobby_widgets/single_lobby_screen.dart';
+import 'package:runfinity/widgets/lobby/single_lobby_screen.dart';
 
-import '../../../styles/app_colors.dart';
+import '../../styles/app_colors.dart';
 
 class FindingLobbyScreen extends StatefulWidget {
   const FindingLobbyScreen({
