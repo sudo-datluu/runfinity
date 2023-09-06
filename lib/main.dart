@@ -5,6 +5,7 @@ import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:runfinity/widgets/loadRunningModal.dart';
 
 void main() {
   runApp(const MyApp());
