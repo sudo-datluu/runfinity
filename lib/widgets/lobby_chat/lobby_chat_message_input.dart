@@ -1,17 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/controllers/chat/lobby_chat_controller.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
 class LobbyMessageInput extends StatefulWidget {
-  LobbyMessageInput({super.key});
+  const LobbyMessageInput({super.key});
 
   @override
   State<LobbyMessageInput> createState() => _LobbyMessageInputState();
 }
 
-class _LobbyMessageInputState extends State<LobbyMessageInput> with SingleTickerProviderStateMixin {
-
-  TextEditingController textEditingController = TextEditingController();
+class _LobbyMessageInputState extends State<LobbyMessageInput>
+    with SingleTickerProviderStateMixin {
+  final _lobbyChatController = Get.put(LobbyChatController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +28,9 @@ class _LobbyMessageInputState extends State<LobbyMessageInput> with SingleTicker
           Row(
             children: [
               IconButton(
-                style: IconButton.styleFrom(
-
-                ),
-                onPressed: (){},
-                icon: Icon(
+                style: IconButton.styleFrom(),
+                onPressed: () {},
+                icon: const Icon(
                   Icons.add_circle,
                   color: Colors.white54,
                 ),
@@ -40,32 +39,36 @@ class _LobbyMessageInputState extends State<LobbyMessageInput> with SingleTicker
                 child: TextFormField(
                   textInputAction: TextInputAction.send,
                   keyboardType: TextInputType.text,
-                  controller: textEditingController,
-                  decoration: InputDecoration(
-                    hintText: "This is an example message...",
-                    hintStyle: TextStyle(
-                      color: Colors.white54,
-                    )
-                  ),
-                  style: TextStyle(
+                  controller: _lobbyChatController.lobbyChatTextController,
+                  decoration: const InputDecoration(
+                      hintText: "This is an example message...",
+                      hintStyle: TextStyle(
+                        color: AppColors.neutral500,
+                      )),
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white54,
                   ),
-                  onFieldSubmitted: (value){
+                  onFieldSubmitted: (value) {
+                    if (value.trim().isEmpty) return;
 
+                    _lobbyChatController.postLobbyMessages(value);
                   },
                 ),
               ),
-              Container(
-                child: IconButton(
-                  style: IconButton.styleFrom(
+              IconButton(
+                style: IconButton.styleFrom(),
+                onPressed: () {
+                  String value = _lobbyChatController.lobbyChatTextController.text;
+                  if (value.trim().isEmpty) return;
 
-                  ),
-                  onPressed: (){},
-                  icon: Icon(
-                    Icons.add_circle,
-                    color: Colors.white54,
-                  ),
+                  _lobbyChatController.postLobbyMessages(value);
+                  
+                  FocusScope.of(context).unfocus();
+                },
+                icon: const Icon(
+                  Icons.send,
+                  color: AppColors.primary,
                 ),
               ),
             ],

@@ -1,11 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:runfinity/models/lobby_chat_messages_model.dart';
 
 class LobbyChatController extends GetxController {
-    TextEditingController lobbyChatTextController = TextEditingController();
+  TextEditingController lobbyChatTextController = TextEditingController();
 
-    bool isHost = false;
-    bool isReady = false;
+  bool isReady = false;
+  bool isHost = false; //compared with host_user_id in lobby api
+  bool isSender = false; //compared with token
 
-  
+  RxList<LobbyChatMesagesModel> lobbyMessages = <LobbyChatMesagesModel>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    getLobbyMessages();
+  }
+
+  void getLobbyMessages() async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    //fetch api get messages here -> save to lobbyMessages.value
+    var res = [
+      LobbyChatMesagesModel(
+        id: 1,
+        user: 'Minh Pham',
+        content: 'Hello World',
+        createdAt: 'Today at 9:39',
+      ),
+      LobbyChatMesagesModel(
+        id: 1,
+        user: 'Messi',
+        content: 'GOAT',
+        createdAt: 'Today 9:41',
+      ),
+      LobbyChatMesagesModel(
+        id: 1,
+        user: 'Ronaldo',
+        content: 'Siuiiiii',
+        createdAt: 'Today 9:40',
+      ),
+    ];
+
+    lobbyMessages.value = res.reversed.toList();
+  }
+
+  void postLobbyMessages(String messageContent) async {
+    LobbyChatMesagesModel message = LobbyChatMesagesModel(
+      id: 2,
+      content: messageContent,
+      user: 'Minh Pham', //need to change adapting the backend
+      createdAt: 'Today 6:40', //need to change to current time and type DateTime or Timestamps
+    );
+ 
+    lobbyMessages.insert(0, message);
+
+    lobbyChatTextController.clear();
+
+    //call api post lobby message here...
+
+  }
 }
