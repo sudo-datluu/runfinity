@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/widgets/lobby/list_lobby_screen.dart';
 import 'package:runfinity/widgets/lobby/single_lobby_screen.dart';
 import '../../../styles/app_colors.dart';
 
@@ -49,16 +50,8 @@ class _FindingLobbyScreenState extends State<FindingLobbyScreen> {
                   ),
                   const SizedBox(height: 20,),
 
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Wrap(
-                      spacing: 30,
-                      children: [
-                        SingleLobbyScreen(),
-                        SingleLobbyScreen(),
-                      ],
-                    ),
-                  ),
+                  ListLobbyScreen(),
+
                   const SizedBox(height: 40,),
                   Center(
                     child: ElevatedButton(

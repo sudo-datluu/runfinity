@@ -7,5 +7,7 @@ urlpatterns = [
     path('auth/login', views.Login.as_view()),
     path('auth/signup', views.RunnerSignUp.as_view()),
     path('auth/profile', views.RunnerProfile.as_view()),
-    path('auth/createlobby', views.LobbyCreate.as_view())
+    path('auth/createlobby', views.LobbyCreate.as_view()),
+    path('auth/getalllobby', views.LobbyGetAll.as_view()),
+    path('auth/getlobby', views.LobbyGet.as_view())
 ]

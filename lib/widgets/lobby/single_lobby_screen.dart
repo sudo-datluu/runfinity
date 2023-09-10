@@ -2,7 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
 class SingleLobbyScreen extends StatefulWidget {
-  const SingleLobbyScreen({super.key});
+  String targetLocationLat;
+  String targetLocationLong;
+  int limitedMembers;
+  int currentMembers;
+  String createdAt;
+  String name;
+
+  SingleLobbyScreen({
+    super.key,
+    required this.targetLocationLat,
+    required this.targetLocationLong,
+    required this.limitedMembers,
+    required this.currentMembers,
+    required this.createdAt,
+    required this.name
+  });
 
   @override
   State<SingleLobbyScreen> createState() => _SingleLobbyScreenState();
@@ -39,7 +54,7 @@ class _SingleLobbyScreenState extends State<SingleLobbyScreen> {
               Container(
                 width: 150,
                 child: Text(
-                  "Darling harbour",
+                  "${widget.name}",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
@@ -57,7 +72,7 @@ class _SingleLobbyScreenState extends State<SingleLobbyScreen> {
               ),
               SizedBox(height: 5,),
               Text(
-                "Members: 3/4",
+                "Members: ${widget.currentMembers}/${widget.limitedMembers}",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -71,7 +86,7 @@ class _SingleLobbyScreenState extends State<SingleLobbyScreen> {
                   ),
                   onPressed: (){},
                   child: const Text(
-                    "Create",
+                    "Join",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
