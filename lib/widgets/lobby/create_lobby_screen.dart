@@ -32,7 +32,7 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
             return GetBuilder<LobbyController>(
               builder: (controller) {
                 return Container(
-                  color: AppColors.neutral800,
+                  color: AppColors.neutral850,
                   child: SingleChildScrollView(
                     controller: scrollController,
                     padding: const EdgeInsets.only(left: 40, right: 40, bottom: 50),

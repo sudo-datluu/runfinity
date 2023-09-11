@@ -21,7 +21,7 @@ class _LobbyScreenState extends State<LobbyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: AppColors.neutral700,
+      backgroundColor: AppColors.text,
       appBar: LobbyHeaderScreen(
         textEditingController: searchTextEditingController,
         onPressedBackButton: (){

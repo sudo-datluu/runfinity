@@ -41,7 +41,14 @@ class _SingleLobbyScreenState extends State<SingleLobbyScreen> {
       key: _formKey,
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.primaryDarker,
+          gradient: LinearGradient(
+            colors: [
+              AppColors.lobbyBoxStart,
+              AppColors.lobbyBoxEnd,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
           borderRadius: BorderRadius.circular(10),
         ),
         padding: EdgeInsets.all(10),
@@ -65,6 +72,7 @@ class _SingleLobbyScreenState extends State<SingleLobbyScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
+                  padding: EdgeInsets.only(top: 10),
                   width: 150,
                   height: 60,
                   child: Text(

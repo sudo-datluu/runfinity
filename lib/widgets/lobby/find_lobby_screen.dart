@@ -25,7 +25,7 @@ class _FindingLobbyScreenState extends State<FindingLobbyScreen> {
 
         builder: (BuildContext context, ScrollController scrollController){
           return Container(
-            color: AppColors.neutral800,
+            color: AppColors.neutral850,
             child: SingleChildScrollView(
               controller: scrollController,
               padding: const EdgeInsets.only(left: 40, right: 40, bottom: 50),

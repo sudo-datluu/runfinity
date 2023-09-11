@@ -42,4 +42,8 @@ class AppColors {
   static const neutral750 = Color(0xFF2F3C50);
   static const neutral770 = Color(0xFF28333F);
   static const neutral800 = Color(0xff1f2937);
+  static const neutral850 = Color(0xff27292E);
+
+  static const lobbyBoxStart = Color(0x805100ff);
+  static const lobbyBoxEnd = Color(0x005100ff);
 }
