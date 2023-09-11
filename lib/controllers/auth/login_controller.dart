@@ -27,7 +27,9 @@ class LoginController extends GetxController {
         var token = jsonResponse['access'];
 
         final SharedPreferences prefs = await _prefs;
+        
         await prefs.setString('token', token);
+        await prefs.setBool('firstLogin', true);
 
         usernameController.clear();
         passwordController.clear();

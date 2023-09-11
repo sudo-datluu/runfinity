@@ -13,7 +13,7 @@ class APIServices {
   }
 
   static Future<dynamic> postDataAPI(
-      String endpointUrl, Map<String, dynamic> body) async {
+      String endpointUrl, Map<String, dynamic>? body) async {
     final url = Uri.parse(apiBaseUrl + endpointUrl);
 
     final Map<String, String> headers = {
@@ -22,7 +22,7 @@ class APIServices {
       'Origin': 'http://127.0.0.1:56820/fWyHvEKkXjg=/',
     };
 
-    final msg = jsonEncode(body);
+    final msg = body != null ? jsonEncode(body) : null;
 
     final res = await http.post(url, headers: headers, body: msg);
 
