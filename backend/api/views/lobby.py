@@ -51,5 +51,21 @@ class LobbyCreate(APIView):
             return Response(serializer.data)
         else:
             return get_bad_request(msg=serializer.errors)  
+        
+class LobbyJoin(APIView):
+    def post(self, request):
+        id = request.data.get('id')
+        try:
+            lobby = Lobby.objects.get(id=id)
+            if (lobby.currentMembers >= lobby.limitMembers):
+                return "Lobby is full"
+            
+            lobby.currentMembers += 1
+            lobby.save()
+
+            serializer = LobbySerializer(lobby)
+            return Response(serializer.data)
+        except Lobby.DoesNotExist:
+            return RESPONSE_NOT_FOUND
 
 

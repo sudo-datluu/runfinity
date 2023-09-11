@@ -1,4 +1,4 @@
-class LobbyValidation{
+class CreateLobbyValidation{
   String? validateName(value) {
     if (value.isEmpty){
       return "Please enter your lobby name";
@@ -17,10 +17,27 @@ class LobbyValidation{
     if (value.isEmpty) {
       return "Please enter your limit member";
     }
-    else if (isInteger(value)) {
+    else if (!isNumeric(value)) {
       return "Please enter an integer";
     }
 
     return null;
+  }
+
+  bool isNumeric(String str) {
+    if(str == null) {
+      return false;
+    }
+    return double.tryParse(str) != null;
+  }
+}
+
+class JoinLobbyValidation {
+  bool validateCurrentMember(currentMembers, limitedMembers) {
+    if (currentMembers >= limitedMembers) {
+      return false;
+    }
+
+    return true;
   }
 }

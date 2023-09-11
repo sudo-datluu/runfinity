@@ -9,5 +9,6 @@ urlpatterns = [
     path('auth/profile', views.RunnerProfile.as_view()),
     path('auth/createlobby', views.LobbyCreate.as_view()),
     path('auth/getalllobby', views.LobbyGetAll.as_view()),
-    path('auth/getlobby', views.LobbyGet.as_view())
+    path('auth/getlobby', views.LobbyGet.as_view()),
+    path('auth/joinlobby', views.LobbyJoin.as_view()),
 ]

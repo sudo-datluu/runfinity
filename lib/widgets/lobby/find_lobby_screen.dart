@@ -20,7 +20,7 @@ class _FindingLobbyScreenState extends State<FindingLobbyScreen> {
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
         initialChildSize: 0.5,
-        minChildSize: 0.3,
+        minChildSize: 0.07,
         maxChildSize: 0.6,
 
         builder: (BuildContext context, ScrollController scrollController){

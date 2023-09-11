@@ -43,7 +43,7 @@ class _ListLobbyScreenState extends State<ListLobbyScreen> {
           if (snapshot.hasData) {
             List<Lobby>? lobbyList = snapshot.data;
             return SizedBox(
-              height: 150,
+              height: 180,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: lobbyList?.length,
@@ -52,12 +52,13 @@ class _ListLobbyScreenState extends State<ListLobbyScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SingleLobbyScreen(
-                          targetLocationLat: lobbyList![index].targetLocationLat.toString(),
-                          targetLocationLong: lobbyList![index].targetLocationLong.toString(),
-                          limitedMembers: lobbyList![index].limitMembers,
-                          currentMembers: lobbyList![index].currentMembers,
-                          createdAt: lobbyList![index].createdAt,
-                          name: lobbyList![index].name
+                        id: lobbyList![index].id,
+                        targetLocationLat: lobbyList![index].targetLocationLat.toString(),
+                        targetLocationLong: lobbyList![index].targetLocationLong.toString(),
+                        limitedMembers: lobbyList![index].limitMembers,
+                        currentMembers: lobbyList![index].currentMembers,
+                        createdAt: lobbyList![index].createdAt,
+                        name: lobbyList![index].name
                       ),
                       const SizedBox(width: 20,),
                     ],

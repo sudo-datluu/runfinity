@@ -17,7 +17,7 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final _lobbyController = Get.put(LobbyController());
-  final _lobbyValidation = LobbyValidation();
+  final _lobbyValidation = CreateLobbyValidation();
 
   @override
   Widget build(BuildContext context) {
