@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:runfinity/screens/store.dart';
 import 'package:runfinity/widgets/loadRunningModal.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //turn off default debug mode
       title: 'App',
-      home: LoadRunningModal(isLoadRun:true,),
+      home: StorePage(),//LoadRunningModal(isLoadRun:true,),
     );
   }
 }
