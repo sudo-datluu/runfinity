@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/widgets/profile/profileMenu.dart';
-import 'package:runfinity/widgets/profile/profileNameCard.dart';
+import 'package:runfinity/widgets/app_text.dart';
+import 'package:runfinity/widgets/profile/profile_menu.dart';
+import 'package:runfinity/widgets/profile/profile_name_card.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -73,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             const ProfileMenu()
           ],

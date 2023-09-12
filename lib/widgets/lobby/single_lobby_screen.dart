@@ -30,7 +30,6 @@ class SingleLobbyScreen extends StatefulWidget {
 }
 
 class _SingleLobbyScreenState extends State<SingleLobbyScreen> {
-
   final _formKey = GlobalKey<FormState>();
   final _lobbyValidation = JoinLobbyValidation();
   final _lobbyController = Get.put(LobbyController());

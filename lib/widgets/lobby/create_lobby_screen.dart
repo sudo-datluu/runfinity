@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:runfinity/controllers/auth/lobby_controller.dart';
 import 'package:runfinity/controllers/auth/login_controller.dart';
 import 'package:runfinity/utils/lobby_validation.dart';
-
 import '../../../styles/app_colors.dart';
 
 class CreateLobbyScreen extends StatefulWidget {

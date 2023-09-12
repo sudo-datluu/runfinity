@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
+import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/utils/api_services.dart';
-import 'package:runfinity/widgets/appText.dart';
+import 'package:runfinity/widgets/app_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupController extends GetxController {
@@ -33,6 +33,8 @@ class SignupController extends GetxController {
         var token = jsonResponse['access'];
 
         final SharedPreferences prefs = await _prefs;
+
+        await prefs.setBool('firstLogin', true);
         await prefs.setString('token', token);
 
         nameController.clear();
@@ -42,7 +44,7 @@ class SignupController extends GetxController {
         passwordController.clear();
         confirmPasswordController.clear();
 
-        Get.off(const LobbyScreen());
+        Get.off(const MainPage());
       } else {
         throw jsonDecode(res.body)["msg"] ?? "Unknown Error Occured";
       }

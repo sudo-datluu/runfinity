@@ -4,11 +4,13 @@ import 'package:page_transition/page_transition.dart';
 import 'package:runfinity/controllers/auth/signup_controller.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widgets/appText.dart';
+import 'package:runfinity/widgets/app_text.dart';
 import 'package:runfinity/utils/form_validation.dart';
-import 'package:runfinity/widgets/login/loginInput.dart';
-import 'package:runfinity/widgets/login/loginPasswordInput.dart';
-import 'package:runfinity/widgets/login/otherLoginOptions.dart';
+import 'package:runfinity/widgets/custom_back_arrow.dart';
+import 'package:runfinity/widgets/login/login_input.dart';
+import 'package:runfinity/widgets/login/login_password_input.dart';
+import 'package:runfinity/widgets/login/other_login_options.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -27,13 +29,13 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Container(
             color: AppColors.background,
             padding: const EdgeInsets.only(bottom: 25),
             child: Column(
               children: [
+                const CustomBackArrow(),
                 Container(
                   padding: const EdgeInsets.only(left: 32, right: 32, top: 16),
                   child: Column(
