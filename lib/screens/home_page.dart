@@ -320,6 +320,7 @@ class _HomePageState extends State<HomePage> {
                           splashFactory:
                               InkSparkle.constantTurbulenceSeedSplashFactory,
                           onTap: () {
+                            Getx
                             print('Button clicked');
                           },
                           child: Container(

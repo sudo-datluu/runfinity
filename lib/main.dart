@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:runfinity/screens/store.dart';
-import 'package:runfinity/widgets/loadRunningModal.dart';
 import 'package:get/get.dart';
-import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widgets/lobby/create_lobby_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -45,7 +41,6 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const LobbyScreen(),
 //       home: StorePage(),//LoadRunningModal(isLoadRun:true,),
 //       theme: ThemeData(
 //         appBarTheme: const AppBarTheme(
