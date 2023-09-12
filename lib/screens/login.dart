@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:runfinity/screens/signup.dart';
+import 'package:runfinity/controllers/auth/login_controller.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:runfinity/widgets/appText.dart';
-import 'package:runfinity/utils/formValidation.dart';
-import 'package:runfinity/widgets/login/loginCheckBox.dart';
-import 'package:runfinity/widgets/login/loginInput.dart';
-import 'package:runfinity/widgets/login/loginPasswordInput.dart';
-import 'package:runfinity/widgets/login/otherLoginOptions.dart';
+import 'package:runfinity/widgets/app_text.dart';
+import 'package:runfinity/utils/form_validation.dart';
+import 'package:runfinity/widgets/check_box.dart';
+import 'package:runfinity/widgets/login/login_input.dart';
+import 'package:runfinity/widgets/login/login_password_input.dart';
+import 'package:runfinity/widgets/login/other_login_options.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -16,15 +20,14 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
   final FormValidation _formValidation = FormValidation();
+
+  final _loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: AppColors.background,
         padding: const EdgeInsets.only(top: 25),
@@ -59,12 +62,12 @@ class _LoginState extends State<Login> {
                         child: Column(
                           children: [
                             LoginInput(
-                              inputController: _usernameController,
+                              inputController: _loginController.usernameController,
                               hintText: "Username",
-                              validate: _formValidation.validateUserName,
+                              validate: _formValidation.validateEmpty,
                             ),
                             LoginPasswordInput(
-                              passwordController: _passwordController,
+                              passwordController: _loginController.passwordController,
                               hintText: "Password",
                               validate: _formValidation.validatePassword,
                             ),
@@ -73,7 +76,7 @@ class _LoginState extends State<Login> {
                               children: [
                                 Row(
                                   children: [
-                                    const LoginCheckbox(),
+                                    const CheckBox(),
                                     AppText(text: 'Remember Me')
                                   ],
                                 ),
@@ -84,32 +87,35 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                             Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  SizedBox(
-                                    height: 56,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: AppColors.primary,
-                                          elevation: 0,
-                                        ),
-                                        onPressed: () {
-                                          final isValidForm = _formKey.currentState!.validate();
-                                          if (isValidForm) {
-
-                                          } 
-                                        },
-                                        child: AppText(
-                                          text: "Log In",
-                                          size: 20,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                SizedBox(
+                                  height: 56,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.primary,
+                                        elevation: 0,
+                                      ),
+                                      onPressed: () {
+                                        final isValidForm = _formKey
+                                            .currentState!
+                                            .validate();
+                                        if (isValidForm) {
+                                          _loginController.loginService();
+                                        }
+                                      },
+                                      child: AppText(
+                                        text: "Log In",
+                                        size: 20,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                   ),
-                                ]),
+                                ),
+                              ],
+                            ),
                           ],
                         )),
                     const SizedBox(
@@ -126,9 +132,18 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           width: 4,
                         ),
-                        AppText(
-                          text: 'Sign Up',
-                          color: AppColors.primary,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: const SignUp(),
+                                    type: PageTransitionType.fade));
+                          },
+                          child: AppText(
+                            text: 'Sign Up',
+                            color: AppColors.primary,
+                          ),
                         )
                       ],
                     )

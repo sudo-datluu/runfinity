@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:runfinity/screens/widgets/lobby_widgets/lobby_chat_messages.dart';
+import 'package:runfinity/widgets/app_text.dart';
+import 'package:runfinity/widgets/lobby_chat/lobby_chat_messages.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
-import '../widgets/lobby_widgets/lobby_chat_message_input.dart';
+import '../../widgets/lobby_chat/lobby_chat_message_input.dart';
 
 class LobbyChatScreen extends StatefulWidget {
   const LobbyChatScreen({super.key});
@@ -21,91 +22,99 @@ class _LobbyChatScreenState extends State<LobbyChatScreen> {
         centerTitle: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
-          "Lobby#001",
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
+        title: AppText(
+          text: 'Lobby #001',
+          size: 25,
+          fontWeight: FontWeight.bold,
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.group,
               size: 30,
             ),
-            onPressed: (){},
+            onPressed: () {},
           ),
         ],
       ),
-
-      body: Padding(
-        padding: EdgeInsets.only(left: 10, right: 10, bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 20, bottom: 20),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Your Target",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, top: 20, bottom: 20),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Your Target",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    children: [
-                      Text(
-                        "Dis. range: 5-10km",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Dis. range: 5-10km",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Text(
-                        "Member: 3/4",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
+                        Spacer(),
+                        Text(
+                          "Member: 3/4",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(
-
-                  ),
-                ),
-                onPressed: (){},
-                child: Text(
-                  "Start",
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ),
-            LobbyChatMessages(),
-            LobbyMessageInput(),
-          ],
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.success,
+                      shape: StadiumBorder(),
+                    ),
+                    onPressed: () {},
+                    child: AppText(
+                      text: 'Start',
+                      size: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
+              const LobbyChatMessages(),
+              LobbyMessageInput(),
+            ],
+          ),
         ),
       ),
     );

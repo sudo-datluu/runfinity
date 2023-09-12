@@ -2,6 +2,14 @@
 class FormValidation {
   String password = '';
 
+  String? validateEmpty(value) {
+    if (value.isEmpty) {
+      return 'Please enter your user name';
+    } else {
+      return null;
+    }
+  }
+
   String? validateUserName(value) {
     if (value.isEmpty) {
       return 'Please enter your user name';
@@ -34,9 +42,9 @@ class FormValidation {
 
   String? validateMail(value) {
     if (value.isEmpty) {
-      return 'Please enter your phone number';
+      return 'Please enter your email';
     } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@gmail.com$').hasMatch(value)) {
-      return 'Phone number not found!';
+      return 'Email not found!';
     } else {
       return null;
     }
