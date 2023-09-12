@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:runfinity/screens/store.dart';
+import 'package:runfinity/widgets/loadRunningModal.dart';
 import 'package:get/get.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/screens/navigationBar.dart';
@@ -28,18 +30,19 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'App',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-          backgroundColor: AppColors.background,
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-              color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
-          elevation: 0,
-        ),
-      ),
+//       home: StorePage(),//LoadRunningModal(isLoadRun:true,),
+//       theme: ThemeData(
+//         appBarTheme: const AppBarTheme(
+//           iconTheme: IconThemeData(
+//             color: Colors.white,
+//           ),
+//           backgroundColor: AppColors.background,
+//           centerTitle: true,
+//           titleTextStyle: TextStyle(
+//               color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+//           elevation: 0,
+//         ),
+//       ),
       home: FutureBuilder<String?>(
           future: getAccessToken(),
           builder: (context, snapshot) {
