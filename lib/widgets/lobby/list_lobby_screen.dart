@@ -17,7 +17,7 @@ class ListLobbyScreen extends StatefulWidget {
 class _ListLobbyScreenState extends State<ListLobbyScreen> {
 
   Future<List<Lobby>> fetchListLobby() async {
-    final res = await APIServices.getDataAPI("auth/getalllobby");
+    final res = await APIServices.getDataAPI("lobby/");
     if (res.statusCode == 200) {
       List jsonRes = json.decode(res.body);
       return jsonRes.map((data) => Lobby.fromJson(data)).toList();

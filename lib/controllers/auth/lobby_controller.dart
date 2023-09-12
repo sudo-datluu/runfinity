@@ -11,8 +11,8 @@ class LobbyController extends GetxController {
   TextEditingController limitMemberEditingController = TextEditingController();
   TextEditingController lobbyNameEditingController = TextEditingController();
 
-  final String lobbycreateUrl = "auth/createlobby";
-  final String lobbyjoinUrl = "auth/joinlobby";
+  final String lobbycreateUrl = "lobby/create";
+  final String lobbyjoinUrl = "lobby/join";
 
   Future<void> CreateLobbyService() async {
     try {

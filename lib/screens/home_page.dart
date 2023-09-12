@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -320,7 +322,8 @@ class _HomePageState extends State<HomePage> {
                           splashFactory:
                               InkSparkle.constantTurbulenceSeedSplashFactory,
                           onTap: () {
-                            Getx
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => LobbyScreen()));
+                            // Get.off(const LobbyScreen());
                             print('Button clicked');
                           },
                           child: Container(
