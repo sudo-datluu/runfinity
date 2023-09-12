@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
 import 'package:runfinity/utils/api_services.dart';
-import 'package:runfinity/widgets/appText.dart';
+
+import '../../widgets/app_text.dart';
 
 class LobbyController extends GetxController {
   TextEditingController locationAddressEditingController = TextEditingController();
   TextEditingController limitMemberEditingController = TextEditingController();
   TextEditingController lobbyNameEditingController = TextEditingController();
 
-  final String lobbycreateUrl = "auth/createlobby";
-  final String lobbyjoinUrl = "auth/joinlobby";
+  final String lobbycreateUrl = "lobby/create";
+  final String lobbyjoinUrl = "lobby/join";
 
   Future<void> CreateLobbyService() async {
     try {
