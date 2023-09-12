@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'package:runfinity/controllers/auth/profile_controller.dart';
 import 'package:runfinity/controllers/chat/lobby_chat_controller.dart';
 import 'package:runfinity/styles/app_colors.dart';
 
@@ -13,6 +14,7 @@ class LobbyMessageInput extends StatefulWidget {
 class _LobbyMessageInputState extends State<LobbyMessageInput>
     with SingleTickerProviderStateMixin {
   final _lobbyChatController = Get.put(LobbyChatController());
+  // final _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,6 @@ class _LobbyMessageInputState extends State<LobbyMessageInput>
                   ),
                   onFieldSubmitted: (value) {
                     if (value.trim().isEmpty) return;
-
                     _lobbyChatController.postLobbyMessages(value);
                   },
                 ),

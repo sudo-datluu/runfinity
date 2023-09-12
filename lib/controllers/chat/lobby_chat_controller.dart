@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:runfinity/models/lobby_chat_messages_model.dart';
+import 'package:runfinity/utils/api_services.dart';
+
+import '../auth/profile_controller.dart';
 
 class LobbyChatController extends GetxController {
   TextEditingController lobbyChatTextController = TextEditingController();
+  final _profileController = Get.put(ProfileController());
 
   bool isReady = false;
   bool isHost = false; //compared with host_user_id in lobby api
@@ -50,14 +54,15 @@ class LobbyChatController extends GetxController {
       id: 2,
       content: messageContent,
       user: 'Minh Pham', //need to change adapting the backend
-      createdAt: 'Today 6:40', //need to change to current time and type DateTime or Timestamps
+      createdAt:
+          'Today 6:40', //need to change to current time and type DateTime or Timestamps
     );
- 
+
     lobbyMessages.insert(0, message);
 
     lobbyChatTextController.clear();
 
     //call api post lobby message here...
-
+    await APIServices.postDataAPI('lobby_chat/post_lobby_message', message);
   }
 }
