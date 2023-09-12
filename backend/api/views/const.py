@@ -44,4 +44,4 @@ def get_random_lat_long_within_range(target_lat, target_long, r=6.66):
     new_x = x / math.cos(math.radians(target_long))
     new_lat = new_x + target_lat
     new_long = y + target_long
-    return new_lat, new_lat
+    return new_lat, new_long
