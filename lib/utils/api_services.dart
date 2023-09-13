@@ -28,8 +28,7 @@ class APIServices {
     if (token != null) {
       headers['Authorization'] = 'Bearer $token';
     }
-
-    print(headers);        
+ 
     final res = await http.get(url, headers: headers);
 
     return res;

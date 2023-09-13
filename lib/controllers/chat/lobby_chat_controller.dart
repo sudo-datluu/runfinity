@@ -18,6 +18,7 @@ class LobbyChatController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    print('get message');
     getLobbyMessages();
   }
 
@@ -28,19 +29,19 @@ class LobbyChatController extends GetxController {
     var res = [
       LobbyChatMesagesModel(
         id: 1,
-        user: 'Minh Pham',
+        user: _profileController.userProfile!,
         content: 'Hello World',
         createdAt: 'Today at 9:39',
       ),
       LobbyChatMesagesModel(
         id: 1,
-        user: 'Messi',
+        user: _profileController.userProfile!,
         content: 'GOAT',
         createdAt: 'Today 9:41',
       ),
       LobbyChatMesagesModel(
         id: 1,
-        user: 'Ronaldo',
+        user: _profileController.userProfile!,
         content: 'Siuiiiii',
         createdAt: 'Today 9:40',
       ),
@@ -53,7 +54,7 @@ class LobbyChatController extends GetxController {
     LobbyChatMesagesModel message = LobbyChatMesagesModel(
       id: 2,
       content: messageContent,
-      user: 'Minh Pham', //need to change adapting the backend
+      user: _profileController.userProfile!, //need to change adapting the backend
       createdAt:
           'Today 6:40', //need to change to current time and type DateTime or Timestamps
     );

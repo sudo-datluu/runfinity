@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/controllers/auth/profile_controller.dart';
 import 'package:runfinity/screens/home_page.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
 import 'package:runfinity/screens/profile.dart';
 
 class MainPage extends StatefulWidget {
@@ -11,12 +14,14 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    ProfilePage(),
+    const HomePage(),
+    const HomePage(),
+    const LobbyChatScreen(),
+    const HomePage(),
+    const ProfilePage(),
   ];
+
+  final profileController = Get.put(ProfileController());
 
   int currentIndex = 0;
   @override
@@ -26,9 +31,9 @@ class _MainPageState extends State<MainPage> {
       extendBody: true,
       bottomNavigationBar: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(12),
-          margin: EdgeInsets.symmetric(horizontal: 24),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(12),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          decoration: const BoxDecoration(
               color: Color.fromARGB(255, 47, 60, 80),
               borderRadius: BorderRadius.all(Radius.circular(24))),
           child: Row(

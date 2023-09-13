@@ -33,7 +33,7 @@ class _LobbyChatMessagesState extends State<LobbyChatMessages> {
                       itemCount: controller.lobbyMessages.length,
                       itemBuilder: (context, index) {
                         return LobbyChatMessageCard(
-                          username: controller.lobbyMessages[index].user,
+                          username: controller.lobbyMessages[index].user.fullname!,
                           content: controller.lobbyMessages[index].content,
                           createdAt: controller.lobbyMessages[index].createdAt,
                           isHost: controller.isHost,
