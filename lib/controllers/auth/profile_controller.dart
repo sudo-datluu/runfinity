@@ -6,7 +6,7 @@ import 'package:runfinity/utils/api_services.dart';
 
 class ProfileController extends GetxController {
   String token = '';
- UserModel? userProfile;
+  UserModel? userProfile;
 
   @override
   void onInit() {
@@ -22,6 +22,7 @@ class ProfileController extends GetxController {
 
       userProfile = UserModel.fromJson(jsonResponse);
     } else {
+      // ignore: avoid_print
       print('Request failed with status: ${res.statusCode}');
     }
   }
