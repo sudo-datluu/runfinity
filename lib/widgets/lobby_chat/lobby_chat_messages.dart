@@ -15,7 +15,6 @@ class LobbyChatMessages extends StatefulWidget {
 class _LobbyChatMessagesState extends State<LobbyChatMessages> {
   final lobbyChatController = Get.put(LobbyChatController());
 
-
   @override
   Widget build(BuildContext context) {
     return Flexible(
