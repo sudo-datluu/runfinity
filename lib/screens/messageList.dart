@@ -22,44 +22,98 @@ class _Message_PageState extends State<Message_Page> {
           ),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 17, vertical: 0),
-            child: Column(
-              children: [
-                //top bar
+          child: Column(
+            children: [
+              //top bar
+              Padding(
+                padding: EdgeInsets.fromLTRB(17, 0, 17, 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.message,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Messages',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.list,
+                          color: Colors.white60,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Icon(
+                          Icons.mark_email_unread,
+                          color: Colors.white60,
+                          size: 30,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              //search widget
 
-                //search widget
-
-                //like and share card
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(17, 15, 17, 5),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Shared!');
-                    },
-                    child: Container(
-                      width: 380,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white.withOpacity(0.5),
-                        image: const DecorationImage(
-                          image: AssetImage('images/Share.png'),
-                          fit: BoxFit.cover,
+              //list
+              Expanded(
+                child: ListView(
+                  children: [
+                    //like and share card
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 17, vertical: 0),
+                      child: GestureDetector(
+                        onTap: () {
+                          print('Shared!');
+                        },
+                        child: Container(
+                          width: 380,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white.withOpacity(0.5),
+                            image: const DecorationImage(
+                              image: AssetImage('images/Share.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
+                    SizedBox(
+                      height: 15,
+                    ),
 
-                //list
-                ListView(
-                  children: [
-                    Message_Card(),
+                    ...List.generate(
+                      20,
+                      (index) => Message_Card(
+                        title: "Hooman " + (index+1).toString(),
+                        subtitle: "Hi there!",
+                        time: "18:00",
+                      ),
+                    )
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

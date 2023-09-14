@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:runfinity/screens/home_page.dart';
+import 'package:runfinity/screens/messageList.dart';
 import 'package:runfinity/screens/profile.dart';
+import 'package:runfinity/screens/store.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,8 +15,8 @@ class _MainPageState extends State<MainPage> {
   List pages = [
     HomePage(),
     HomePage(),
-    HomePage(),
-    HomePage(),
+    Message_Page(),
+    StorePage(),
     ProfilePage(),
   ];
 
