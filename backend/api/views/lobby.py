@@ -1,10 +1,16 @@
+import array
+import random
+import traceback
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import permissions
 
-from api.models.lobby import Lobby
+from api.models import Runner, Lobby, History
 from api.serializers.lobby import LobbySerializer, LobbyCreateSerializer
+from api.serializers import HistorySerializer
 
-from .const import RESPONSE_NOT_FOUND, get_bad_request
+from .const import RESPONSE_FORBIDDEN, RESPONSE_NOT_FOUND, get_bad_request, get_random_lat_long_within_range
 
 
 class LobbyGetAll(APIView):
@@ -37,12 +43,14 @@ class LobbyCreate(APIView):
             limitMembers = request.data.get("limitMembers")
             createdAt = request.data.get("createdAt")
             name = request.data.get("name")
+            currentMemberID = array.array(request.data.get("currentMemberID"))
 
             lobby = Lobby(targetLocationLat=targetLocationLat, 
                             targetLocationLong=targetLocationLong,
                             targetLocationAddressFormat=targetLocationAddressFormat,
                             limitMembers=limitMembers,
                             currentMembers=1,
+                            currentMemberID=currentMemberID,
                             createdAt=createdAt,
                             name=name,)
             lobby.save()
@@ -52,35 +60,31 @@ class LobbyCreate(APIView):
         else:
             return get_bad_request(msg=serializer.errors)  
         
+class LobbyDeleteAll(APIView):
+    def delete(self, request):
+        try:
+            Lobby.objects.all().delete()
+            return Response("Delete all lobies")
+        except Lobby.DoesNotExist:
+            return RESPONSE_NOT_FOUND
+        
 class LobbyJoin(APIView):
     def post(self, request):
         id = request.data.get('id')
+        memberID = request.data.get('memberID')
         try:
             lobby = Lobby.objects.get(id=id)
             if (lobby.currentMembers >= lobby.limitMembers):
                 return "Lobby is full"
             
             lobby.currentMembers += 1
+            lobby.currentMemberID.append(memberID)
             lobby.save()
 
             serializer = LobbySerializer(lobby)
             return Response(serializer.data)
         except Lobby.DoesNotExist:
             return RESPONSE_NOT_FOUND
-
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import status, permissions
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from django.contrib.auth import authenticate
-
-from api.models import Runner, Lobby, History
-from api.serializers import HistorySerializer
-import traceback
-from .const import RESPONSE_FORBIDDEN, RESPONSE_NOT_FOUND, get_bad_request, get_random_lat_long_within_range
-import random
 
 '''
 User run in a lobby
