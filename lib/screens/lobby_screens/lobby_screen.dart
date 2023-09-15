@@ -15,7 +15,7 @@ class LobbyScreen extends StatefulWidget {
 
 class _LobbyScreenState extends State<LobbyScreen> {
 
-  final TextEditingController searchTextEditingController = new TextEditingController();
+  final TextEditingController searchTextEditingController = TextEditingController();
   bool isCreatingLobby = false;
 
   @override
@@ -35,7 +35,7 @@ class _LobbyScreenState extends State<LobbyScreen> {
       ),
       body: SizedBox.expand(
         child: isCreatingLobby
-          ? CreateLobbyScreen()
+          ? const CreateLobbyScreen()
           : FindingLobbyScreen(
               onClicked: () {
                 setState(() {

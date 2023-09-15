@@ -43,7 +43,8 @@ class LobbyCreate(APIView):
             limitMembers = request.data.get("limitMembers")
             createdAt = request.data.get("createdAt")
             name = request.data.get("name")
-            currentMemberID = array.array(request.data.get("currentMemberID"))
+            currentMemberID = []
+            currentMemberID.append(request.data.get("memberID"))
 
             lobby = Lobby(targetLocationLat=targetLocationLat, 
                             targetLocationLong=targetLocationLong,

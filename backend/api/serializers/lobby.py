@@ -25,7 +25,7 @@ class LobbyCreateSerializer(serializers.Serializer):
     targetLocationAddressFormat = serializers.CharField(max_length=255, required=True)
     limitMembers = serializers.IntegerField(required=True)
     currentMembers = serializers.IntegerField(required=False)
-    currentMemberID = serializers.ListField(child=serializers.IntegerField(required=False))
+    currentMemberID = serializers.ListField(child=serializers.IntegerField(required=False), required=False)
     createdAt = serializers.DateTimeField(required=True)
     name = serializers.CharField(max_length=255, required=True)
 

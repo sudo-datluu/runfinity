@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:runfinity/utils/api_services.dart';
 import 'package:runfinity/widgets/lobby/single_lobby_screen.dart';
 
-import '../../models/lobby.dart';
+import '../../models/lobby_model.dart';
 
 class ListLobbyScreen extends StatefulWidget {
   const ListLobbyScreen({super.key});

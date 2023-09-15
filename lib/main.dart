@@ -56,8 +56,13 @@ class MyApp extends StatelessWidget {
               );
             } else {
               final token = snapshot.data;
-              
-              return token != null ? const MainPage() : const Login();
+              if (token != null) {
+                return const MainPage();
+              }
+              else {
+                return Login();
+              }
+
             }
           }),
     );

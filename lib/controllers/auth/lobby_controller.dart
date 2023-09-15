@@ -5,11 +5,14 @@ import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
 import 'package:runfinity/utils/api_services.dart';
 
 import '../../widgets/app_text.dart';
+import './profile_controller.dart';
 
 class LobbyController extends GetxController {
   TextEditingController locationAddressEditingController = TextEditingController();
   TextEditingController limitMemberEditingController = TextEditingController();
   TextEditingController lobbyNameEditingController = TextEditingController();
+
+  final _profileController = Get.put(ProfileController());
 
   final String lobbycreateUrl = "lobby/create";
   final String lobbyjoinUrl = "lobby/join";
@@ -24,6 +27,7 @@ class LobbyController extends GetxController {
         "currentMembers": 1,
         "createdAt": "2002-12-12",
         "name": "darling harbour1", //todo lobbyNameEditin...
+        "memberID": _profileController.userProfile!.id
       };
 
       final res = await APIServices.postDataAPI(lobbycreateUrl, body);
