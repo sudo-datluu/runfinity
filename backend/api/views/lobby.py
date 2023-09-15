@@ -87,6 +87,25 @@ class LobbyJoin(APIView):
         except Lobby.DoesNotExist:
             return RESPONSE_NOT_FOUND
 
+
+class LobbyLeft(APIView):
+    def post(self, request):
+        id = request.data.get('id')
+        memberID = request.data.get('memberID')
+        try:
+            lobby = Lobby.objects.get(id=id)
+            if memberID in lobby.currentMemberID:
+                lobby.currentMemberID.remove(memberID)
+                lobby.currentMembers -= 1
+            else:
+                return RESPONSE_NOT_FOUND
+            
+            lobby.save()
+            serializer = LobbySerializer(lobby)
+            return Response(serializer.data)
+        except Lobby.DoesNotExist:
+            return RESPONSE_NOT_FOUND
+
 '''
 User run in a lobby
 '''
