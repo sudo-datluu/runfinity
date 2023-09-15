@@ -13,4 +13,7 @@ urlpatterns = [
     path('lobby/<int:lobby_id>', views.LobbyGet.as_view()),
     path('lobby/join', views.LobbyJoin.as_view()),
     path('lobby/<int:lobby_id>/run', views.RunInLobby.as_view()),
+
+    path('lobby_chat/get_all_lobby_messages', views.GetAllLobbyMessages.as_view()),
+    path('lobby_chat/post_lobby_message', views.RunnerProfile.as_view())
 ]

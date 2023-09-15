@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/controllers/chat/lobby_chat_controller.dart';
 import 'package:runfinity/widgets/app_text.dart';
 import 'package:runfinity/widgets/lobby_chat/lobby_chat_messages.dart';
 import 'package:runfinity/styles/app_colors.dart';
@@ -13,6 +15,8 @@ class LobbyChatScreen extends StatefulWidget {
 }
 
 class _LobbyChatScreenState extends State<LobbyChatScreen> {
+  final lobbyChatController = Get.put(LobbyChatController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
