@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:runfinity/controllers/auth/lobby_controller.dart';
 import 'package:runfinity/controllers/chat/lobby_chat_controller.dart';
+import 'package:runfinity/screens/home_page.dart';
+import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
 import 'package:runfinity/widgets/app_text.dart';
 import 'package:runfinity/widgets/lobby_chat/lobby_chat_messages.dart';
 import 'package:runfinity/styles/app_colors.dart';
@@ -15,6 +18,7 @@ class LobbyChatScreen extends StatefulWidget {
 }
 
 class _LobbyChatScreenState extends State<LobbyChatScreen> {
+  final lobbyController = Get.put(LobbyController());
   final lobbyChatController = Get.put(LobbyChatController());
 
   @override
@@ -26,6 +30,13 @@ class _LobbyChatScreenState extends State<LobbyChatScreen> {
         centerTitle: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: (){
+            lobbyController.LeftLobbyService();
+            Get.off(const HomePage());
+          },
+        ),
         title: AppText(
           text: 'Lobby #001',
           size: 25,

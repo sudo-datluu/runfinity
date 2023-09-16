@@ -36,6 +36,7 @@ class LobbyGet(APIView):
 class LobbyCreate(APIView):
     def post(self, request):
         serializer = LobbyCreateSerializer(data=request.data)
+        print(serializer)
         if serializer.is_valid():
             targetLocationLat = request.data.get("targetLocationLat")
             targetLocationLong = request.data.get("targetLocationLong")

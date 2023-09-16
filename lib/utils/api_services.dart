@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:runfinity/screens/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class APIServices {
@@ -21,20 +23,23 @@ class APIServices {
       'Content-Type': 'application/json; charset=UTF-8',
       'User-Agent': 'Runfinity',
       'Origin': 'http://127.0.0.1:56820/fWyHvEKkXjg=/',
+      'Connection': 'keep-alive',
     };
 
-
-
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
-    }
+    // if (token != null) {
+    //   headers['Authorization'] = 'Bearer $token';
+    // }
  
     final res = await http.get(url, headers: headers);
 
+    if (res.statusCode == 401) {
+      Get.off(const Login());
+    }
     return res;
   }
 
   static Future<dynamic> postDataAPI(String endpointUrl, body) async {
+
     final url = Uri.parse(apiBaseUrl + endpointUrl);
 
     final String? token = await getAccessToken();
@@ -43,16 +48,19 @@ class APIServices {
       'Content-Type': 'application/json; charset=UTF-8',
       'User-Agent': 'Runfinity',
       'Origin': 'http://127.0.0.1:56820/fWyHvEKkXjg=/',
+      'Connection': 'keep-alive',
     };
 
-
-    if (token != null) {
-      headers['Authorization'] = 'Bearer $token';
-    }
+    // if (token != null) {
+    //   headers['Authorization'] = 'Bearer $token';
+    // }
 
     final msg = jsonEncode(body);
 
     final res = await http.post(url, headers: headers, body: msg);
+    if (res.statusCode == 401) {
+      Get.off(const Login());
+    }
 
     return res;
   }

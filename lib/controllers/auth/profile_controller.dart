@@ -26,4 +26,8 @@ class ProfileController extends GetxController {
       print('Request failed with status: ${res.statusCode}');
     }
   }
+
+  void setUserProfile(res) {
+    userProfile = UserModel.fromJson(res);
+  }
 }
