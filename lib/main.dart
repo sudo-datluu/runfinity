@@ -5,6 +5,7 @@ import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/utils/api_services.dart';
+import 'package:runfinity/widgets/map/google_map.dart';
 
 
 void main() {
@@ -48,23 +49,24 @@ class MyApp extends StatelessWidget {
 //         ),
 //       ),
       home: FutureBuilder<String?>(
-          future: APIServices.getAccessToken(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else {
-              final token = snapshot.data;
-              if (token != null) {
-                return const MainPage();
-              }
-              else {
-                return const Login();
-              }
-
+        future: APIServices.getAccessToken(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return GoogleApp();
+            final token = snapshot.data;
+            if (token != null) {
+              return const MainPage();
             }
-          }),
+            else {
+              return const Login();
+            }
+          }
+        }
+      ),
     );
   }
 }
