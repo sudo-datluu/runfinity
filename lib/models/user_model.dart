@@ -31,7 +31,7 @@ class UserModel {
     totalSteps = json['totalSteps'];
     earnedPts = json['earnedPts'];
     fullname = json['fullname'];
-    refresh = json['refresh'];
+    refresh = json['refresh'];  
     access = json['access'];
   }
 

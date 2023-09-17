@@ -13,6 +13,8 @@ class GetAllLobbyMessages(APIView):
 
         serializer = LobbyChatSerializer(messages, many=True)
 
+        print(serializer)
+
         return Response(serializer.data)
     
 

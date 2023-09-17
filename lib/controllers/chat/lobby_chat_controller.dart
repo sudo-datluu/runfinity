@@ -18,7 +18,6 @@ class LobbyChatController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    print('get message');
     getLobbyMessages();
   }
 
@@ -54,7 +53,7 @@ class LobbyChatController extends GetxController {
     LobbyChatMesagesModel message = LobbyChatMesagesModel(
       id: 2,
       content: messageContent,
-      user: _profileController.userProfile!, //need to change adapting the backend
+      user: _profileController.userProfile!,
       createdAt:
           'Today 6:40', //need to change to current time and type DateTime or Timestamps
     );
