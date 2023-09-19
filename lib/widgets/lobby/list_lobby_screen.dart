@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:runfinity/utils/api_services.dart';
 import 'package:runfinity/widgets/lobby/single_lobby_screen.dart';
 
-import '../../models/lobby.dart';
+import '../../models/lobby_model.dart';
 
 class ListLobbyScreen extends StatefulWidget {
   const ListLobbyScreen({super.key});
@@ -16,11 +16,11 @@ class ListLobbyScreen extends StatefulWidget {
 
 class _ListLobbyScreenState extends State<ListLobbyScreen> {
 
-  Future<List<Lobby>> fetchListLobby() async {
+  Future<List<LobbyModel>> fetchListLobby() async {
     final res = await APIServices.getDataAPI("lobby/");
     if (res.statusCode == 200) {
       List jsonRes = json.decode(res.body);
-      return jsonRes.map((data) => Lobby.fromJson(data)).toList();
+      return jsonRes.map((data) => LobbyModel.fromJson(data)).toList();
     }
     else {
       throw jsonDecode(res.body)["msg"] ?? "Unknown Error Occured";
@@ -37,11 +37,11 @@ class _ListLobbyScreenState extends State<ListLobbyScreen> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      child: FutureBuilder<List<Lobby>>(
+      child: FutureBuilder<List<LobbyModel>>(
         future: fetchListLobby(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<Lobby>? lobbyList = snapshot.data;
+            List<LobbyModel>? lobbyList = snapshot.data;
             return SizedBox(
               height: 180,
               child: ListView.builder(

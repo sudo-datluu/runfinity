@@ -9,11 +9,14 @@ class Lobby(models.Model):
         verbose_name = _('Lobby')
         verbose_name_plural = _('Lobbies')
 
+    owner = models.ForeignKey(Runner, on_delete=models.CASCADE, default=1)
+    ended = models.BooleanField(default=False)
     targetLocationLat = models.FloatField()
     targetLocationLong = models.FloatField()
     targetLocationAddressFormat = models.TextField()
     limitMembers = models.PositiveSmallIntegerField()
     currentMembers = models.PositiveSmallIntegerField(default=1)
+    currentMemberID = ArrayField(models.PositiveSmallIntegerField(), default=list)
     createdAt = models.DateTimeField(auto_now_add=True)
     name = models.TextField()
     

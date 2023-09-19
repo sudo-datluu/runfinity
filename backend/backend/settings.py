@@ -151,6 +151,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_TOKEN_EXPIRE_SECONDS': 3600,
     'COERCE_DECIMAL_TO_STRING': False,
 }
 

@@ -29,7 +29,8 @@ class _ProfileMenuState extends State<ProfileMenu> {
   }
 
   void handleLogOut() {
-    _prefs.remove('token');
+    _prefs.remove('token'); 
+    _prefs.remove('firstLogin');
 
     Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (context) => const Login(),
