@@ -3,10 +3,15 @@ from api.models.lobby import Lobby
 
 
 class LobbySerializer(serializers.ModelSerializer):
+    owner = serializers.SerializerMethodField()
+
+    def get_owner(self, obj):
+        return obj.owner.email
     class Meta:
         model = Lobby
         fields = [
             "id",
+            "owner",
             "targetLocationLat",
             "targetLocationLong",
             "targetLocationAddressFormat",
@@ -14,7 +19,9 @@ class LobbySerializer(serializers.ModelSerializer):
             "currentMembers",
             "currentMemberID",
             "createdAt",
-            "name"
+            "name",
+            "ended",
+            "started"
         ]
             
         

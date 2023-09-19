@@ -11,6 +11,7 @@ class Lobby(models.Model):
 
     owner = models.ForeignKey(Runner, on_delete=models.CASCADE, default=1)
     ended = models.BooleanField(default=False)
+    started = models.BooleanField(default=False)
     targetLocationLat = models.FloatField()
     targetLocationLong = models.FloatField()
     targetLocationAddressFormat = models.TextField()
@@ -29,7 +30,7 @@ class History(models.Model):
     latTracks = ArrayField(models.FloatField(), blank=True)
     longTracks = ArrayField(models.FloatField(), blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
-    endedAt = models.DateTimeField()
+    endedAt = models.DateTimeField(blank=True, auto_now_add=True)
     maxBPM = models.FloatField()
     bpmArray = ArrayField(models.FloatField(), blank=True) 
     steps = models.PositiveIntegerField(default=0)

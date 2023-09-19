@@ -10,7 +10,7 @@ from api.models import Lobby, History, Runner
 from api.serializers.lobby import LobbySerializer, LobbyCreateSerializer
 from api.serializers.history import HistorySerializer
 
-from .const import RESPONSE_NOT_FOUND, get_bad_request, get_random_lat_long_within_range
+from .const import RESPONSE_NOT_FOUND, RESPONSE_FORBIDDEN, get_bad_request, get_random_lat_long_within_range
 import traceback
 import random
 
@@ -24,38 +24,67 @@ class LobbyGetAll(APIView):
             return RESPONSE_NOT_FOUND
 
 class LobbyGet(APIView):
-    def post(self, request):
-        name = request.data.get("name")
+    def get(self, request, lobby_id):
         try:
-            lobby = Lobby.objects.get(name=name)
+            lobby = Lobby.objects.get(id=lobby_id)
             serializer = LobbySerializer(lobby)
             return Response(serializer.data)
         except Lobby.DoesNotExist:
             return RESPONSE_NOT_FOUND
 
+class LobbyStart(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    def post(self, request,lobby_id):
+        try:
+            lobby = Lobby.objects.get(id=lobby_id)
+            runner = Runner.objects.filter(username=request.user.username).first()
+            if lobby.started:
+                return get_bad_request("Lobby have already started")
+            lobby.started = True
+            lobby.save()
+            if not runner or lobby.owner != runner:
+                return RESPONSE_FORBIDDEN
+            for memberID in lobby.currentMemberID:
+                member = Runner.objects.get(id=memberID)
+                if not member: continue
+                history = History(
+                    lobby=lobby,
+                    runner=member,
+                    maxBPM=0,
+                    latTracks=[],
+                    longTracks=[],
+                    bpmArray=[]
+                )
+                history.save()
+            serializer = LobbySerializer(lobby)
+            return Response(serializer.data)
+        except Lobby.DoesNotExist:
+            return RESPONSE_NOT_FOUND
 
 class LobbyCreate(APIView):
+    permission_classes = [permissions.IsAuthenticated]
     def post(self, request):
         serializer = LobbyCreateSerializer(data=request.data)
-        print(serializer)
+        runner = Runner.objects.filter(username=request.user.username).first()
+        if not runner:
+            return RESPONSE_FORBIDDEN
         if serializer.is_valid():
             targetLocationLat = request.data.get("targetLocationLat")
             targetLocationLong = request.data.get("targetLocationLong")
             targetLocationAddressFormat = request.data.get("targetLocationAddressFormat")
             limitMembers = request.data.get("limitMembers")
-            createdAt = request.data.get("createdAt")
             name = request.data.get("name")
-            currentMemberID = []
-            currentMemberID.append(request.data.get("memberID"))
+            currentMemberID = [runner.id]
 
-            lobby = Lobby(targetLocationLat=targetLocationLat, 
-                            targetLocationLong=targetLocationLong,
-                            targetLocationAddressFormat=targetLocationAddressFormat,
-                            limitMembers=limitMembers,
-                            currentMembers=1,
-                            currentMemberID=currentMemberID,
-                            createdAt=createdAt,
-                            name=name,)
+            lobby = Lobby(
+                owner=runner,
+                targetLocationLat=targetLocationLat, 
+                targetLocationLong=targetLocationLong,
+                targetLocationAddressFormat=targetLocationAddressFormat,
+                limitMembers=limitMembers,
+                currentMembers=1,
+                currentMemberID=currentMemberID,
+                name=name,)
             lobby.save()
             
             serializer = LobbySerializer(lobby)
@@ -72,16 +101,22 @@ class LobbyDeleteAll(APIView):
             return RESPONSE_NOT_FOUND
         
 class LobbyJoin(APIView):
-    def post(self, request):
-        id = request.data.get('id')
-        memberID = request.data.get('memberID')
+    permission_classes = [permissions.IsAuthenticated]
+    def post(self, request, lobby_id):
+        
         try:
-            lobby = Lobby.objects.get(id=id)
+            runner = Runner.objects.filter(username=request.user.username).first()
+            if not runner:
+                return RESPONSE_FORBIDDEN
+            lobby = Lobby.objects.get(id=lobby_id)
             if (lobby.currentMembers >= lobby.limitMembers):
-                return "Lobby is full"
-            
+                return get_bad_request("Lobby is full")
+            if runner.id in lobby.currentMemberID:
+                return get_bad_request("This user have already joined!")
+            if lobby.started:
+                return get_bad_request("This lobby has been started")
             lobby.currentMembers += 1
-            lobby.currentMemberID.append(memberID)
+            lobby.currentMemberID.append(runner.id)
             lobby.save()
 
             serializer = LobbySerializer(lobby)
@@ -90,17 +125,18 @@ class LobbyJoin(APIView):
             return RESPONSE_NOT_FOUND
           
 class LobbyLeft(APIView):
-    def post(self, request):
-        id = request.data.get('id')
-        memberID = request.data.get('memberID')
+    permission_classes = [permissions.IsAuthenticated]
+    def post(self, request, lobby_id):
         try:
-            lobby = Lobby.objects.get(id=id)
-            if memberID in lobby.currentMemberID:
-                lobby.currentMemberID.remove(memberID)
+            lobby = Lobby.objects.get(id=lobby_id)
+            runner = Runner.objects.filter(username=request.user.username).first()
+            if not runner:
+                return RESPONSE_FORBIDDEN
+            if runner.id in lobby.currentMemberID:
+                lobby.currentMemberID.remove(runner.id)
                 lobby.currentMembers -= 1
             else:
-                return RESPONSE_NOT_FOUND
-            
+                return get_bad_request("This user have not joined this lobby")
             lobby.save()
             serializer = LobbySerializer(lobby)
             return Response(serializer.data)
