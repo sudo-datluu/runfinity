@@ -9,6 +9,8 @@ class Lobby(models.Model):
         verbose_name = _('Lobby')
         verbose_name_plural = _('Lobbies')
 
+    owner = models.ForeignKey(Runner, on_delete=models.CASCADE, default=1)
+    ended = models.BooleanField(default=False)
     targetLocationLat = models.FloatField()
     targetLocationLong = models.FloatField()
     targetLocationAddressFormat = models.TextField()
