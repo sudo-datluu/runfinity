@@ -14,7 +14,7 @@ class CreateLobbyScreen extends StatefulWidget {
 
 class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
 
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey();
   final _lobbyController = Get.put(LobbyController());
   final _lobbyValidation = CreateLobbyValidation();
 
@@ -142,7 +142,7 @@ class _CreateLobbyScreenState extends State<CreateLobbyScreen> {
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                             ),

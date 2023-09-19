@@ -16,6 +16,7 @@ class Lobby(models.Model):
     targetLocationAddressFormat = models.TextField()
     limitMembers = models.PositiveSmallIntegerField()
     currentMembers = models.PositiveSmallIntegerField(default=1)
+    currentMemberID = ArrayField(models.PositiveSmallIntegerField(), default=list)
     createdAt = models.DateTimeField(auto_now_add=True)
     name = models.TextField()
     

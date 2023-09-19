@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/styles/app_colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:runfinity/utils/api_services.dart';
 
 
 void main() {
@@ -13,13 +13,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  Future<String?> getAccessToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
-
-    return token;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +48,7 @@ class MyApp extends StatelessWidget {
 //         ),
 //       ),
       home: FutureBuilder<String?>(
-          future: getAccessToken(),
+          future: APIServices.getAccessToken(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -63,8 +56,13 @@ class MyApp extends StatelessWidget {
               );
             } else {
               final token = snapshot.data;
-              
-              return token != null ? const MainPage() : const Login();
+              if (token != null) {
+                return const MainPage();
+              }
+              else {
+                return const Login();
+              }
+
             }
           }),
     );

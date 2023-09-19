@@ -50,7 +50,7 @@ class _FindingLobbyScreenState extends State<FindingLobbyScreen> {
                     ),
                   ),
                   const SizedBox(height: 20,),
-                  ListLobbyScreen(),
+                  const ListLobbyScreen(),
                   const SizedBox(height: 40,),
                   Center(
                     child: ElevatedButton(

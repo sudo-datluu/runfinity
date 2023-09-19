@@ -1,4 +1,4 @@
-class Lobby {
+class LobbyModel {
   final int id;
   final double targetLocationLat;
   final double targetLocationLong;
@@ -7,7 +7,7 @@ class Lobby {
   final String createdAt;
   final String name;
 
-  Lobby({
+  LobbyModel({
     required this.id,
     required this.targetLocationLat,
     required this.targetLocationLong,
@@ -17,8 +17,8 @@ class Lobby {
     required this.name,
   });
 
-  factory Lobby.fromJson(Map<String, dynamic> json) {
-    return Lobby(
+  factory LobbyModel.fromJson(Map<String, dynamic> json) {
+    return LobbyModel(
       id: json['id'],
       targetLocationLat: json['targetLocationLat'],
       targetLocationLong: json['targetLocationLong'],
