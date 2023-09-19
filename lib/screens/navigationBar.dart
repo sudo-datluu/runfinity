@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:runfinity/controllers/auth/profile_controller.dart';
 import 'package:runfinity/screens/home_page.dart';
+import 'package:runfinity/screens/messageList.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_chat_screen.dart';
 import 'package:runfinity/screens/profile.dart';
+import 'package:runfinity/screens/store.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,11 +16,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    const HomePage(),
-    const HomePage(),
-    const LobbyChatScreen(),
-    const HomePage(),
-    const ProfilePage(),
+    HomePage(),
+    HomePage(),
+    Message_Page(),
+    StorePage(),
+    ProfilePage(),
   ];
 
   final profileController = Get.put(ProfileController());
