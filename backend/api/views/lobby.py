@@ -6,12 +6,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import permissions
 
-from api.models import Runner, Lobby, History
+from api.models import Lobby, History, Runner
 from api.serializers.lobby import LobbySerializer, LobbyCreateSerializer
-from api.serializers import HistorySerializer
+from api.serializers.history import HistorySerializer
 
-from .const import RESPONSE_FORBIDDEN, RESPONSE_NOT_FOUND, get_bad_request, get_random_lat_long_within_range
-
+from .const import RESPONSE_NOT_FOUND, get_bad_request, get_random_lat_long_within_range
+import traceback
+import random
 
 class LobbyGetAll(APIView):
     def get(self, request):
@@ -87,8 +88,7 @@ class LobbyJoin(APIView):
             return Response(serializer.data)
         except Lobby.DoesNotExist:
             return RESPONSE_NOT_FOUND
-
-
+          
 class LobbyLeft(APIView):
     def post(self, request):
         id = request.data.get('id')
@@ -123,6 +123,9 @@ class RunInLobby(APIView):
             lobby = Lobby.objects.get(id=lobby_id)
             if not lobby:
                 errors.append("Lobby does not exist")
+                throwException = True
+            if lobby.ended:
+                errors.append("Lobby has been ended")
                 throwException = True
             if throwException: raise Exception
             history = History.objects.filter(lobby=lobby, runner=runner).first()

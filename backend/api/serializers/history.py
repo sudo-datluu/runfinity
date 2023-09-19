@@ -4,6 +4,10 @@ from rest_framework import serializers
 class HistorySerializer(serializers.ModelSerializer):
     lobby_id = serializers.SerializerMethodField()
     runner_email = serializers.SerializerMethodField()
+    kilometers = serializers.SerializerMethodField()
+
+    def get_kilometers(self, obj):
+        return round(obj.steps * 0.672 / 1000, 2)
     
     def get_lobby_id(self, obj):
         return obj.lobby.id
@@ -26,5 +30,6 @@ class HistorySerializer(serializers.ModelSerializer):
             "steps",
             "caloriesBurned",
             "ptsEarned",
-            "expEarned"
+            "expEarned",
+            "kilometers"
         ]
