@@ -1,8 +1,10 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/app_text.dart';
 import 'package:runfinity/widgets/custom_switch.dart';
+import 'package:runfinity/widgets/logout_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileMenu extends StatefulWidget {
   const ProfileMenu({super.key});
@@ -12,7 +14,31 @@ class ProfileMenu extends StatefulWidget {
 }
 
 class _ProfileMenuState extends State<ProfileMenu> {
-  bool status = false;
+  late SharedPreferences _prefs;
+
+  bool status = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _initSharedPreferences();
+  }
+
+  _initSharedPreferences() async {
+    _prefs = await SharedPreferences.getInstance();
+  }
+
+  void handleLogOut() {
+    _prefs.remove('token'); 
+    _prefs.remove('firstLogin');
+
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const Login(),
+    ));
+
+    //call api logout
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,10 +158,11 @@ class _ProfileMenuState extends State<ProfileMenu> {
                 Icons.arrow_forward_ios,
                 color: Colors.white,
                 size: 12,
-              )
+              ),
             ],
           ),
         ),
+        LogOutButton(handleLogOut: handleLogOut)
       ],
     );
   }

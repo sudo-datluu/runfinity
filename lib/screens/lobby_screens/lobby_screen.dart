@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:runfinity/screens/home_page.dart';
 import 'package:runfinity/screens/lobby_screens/lobby_header_screen.dart';
+
 import 'package:runfinity/widgets/lobby/create_lobby_screen.dart';
 
 import '../../../styles/app_colors.dart';
@@ -14,14 +17,14 @@ class LobbyScreen extends StatefulWidget {
 
 class _LobbyScreenState extends State<LobbyScreen> {
 
-  final TextEditingController searchTextEditingController = new TextEditingController();
+  final TextEditingController searchTextEditingController = TextEditingController();
   bool isCreatingLobby = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: AppColors.neutral700,
+      backgroundColor: AppColors.text,
       appBar: LobbyHeaderScreen(
         textEditingController: searchTextEditingController,
         onPressedBackButton: (){
@@ -30,11 +33,14 @@ class _LobbyScreenState extends State<LobbyScreen> {
               isCreatingLobby = false;
             });
           }
+          else {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+          }
         },
       ),
       body: SizedBox.expand(
         child: isCreatingLobby
-          ? CreateLobbyScreen()
+          ? const CreateLobbyScreen()
           : FindingLobbyScreen(
               onClicked: () {
                 setState(() {

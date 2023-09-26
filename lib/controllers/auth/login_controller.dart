@@ -1,13 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:runfinity/screens/lobby_screens/lobby_screen.dart';
+import 'package:runfinity/controllers/auth/profile_controller.dart';
+import 'package:runfinity/screens/navigationBar.dart';
 import 'package:runfinity/utils/api_services.dart';
-import 'package:runfinity/widgets/appText.dart';
+import 'package:runfinity/widgets/app_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final _profileController = Get.put(ProfileController());
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -27,12 +29,16 @@ class LoginController extends GetxController {
         var token = jsonResponse['access'];
 
         final SharedPreferences prefs = await _prefs;
+        
         await prefs.setString('token', token);
+        await prefs.setBool('firstLogin', true);
 
         usernameController.clear();
         passwordController.clear();
 
-        Get.off(const LobbyScreen());
+        _profileController.setUserProfile(jsonResponse);
+
+        Get.off(const MainPage());
       } else {
         throw jsonDecode(res.body)["msg"] ?? "Unknown Error Occured";
       }

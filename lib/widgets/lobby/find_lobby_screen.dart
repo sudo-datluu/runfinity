@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:runfinity/widgets/lobby/list_lobby_screen.dart';
 import 'package:runfinity/widgets/lobby/single_lobby_screen.dart';
+import '../../../styles/app_colors.dart';
 
-import '../../styles/app_colors.dart';
 
 class FindingLobbyScreen extends StatefulWidget {
   const FindingLobbyScreen({
@@ -20,12 +21,12 @@ class _FindingLobbyScreenState extends State<FindingLobbyScreen> {
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
         initialChildSize: 0.5,
-        minChildSize: 0.3,
+        minChildSize: 0.07,
         maxChildSize: 0.6,
 
         builder: (BuildContext context, ScrollController scrollController){
           return Container(
-            color: AppColors.neutral800,
+            color: AppColors.neutral850,
             child: SingleChildScrollView(
               controller: scrollController,
               padding: const EdgeInsets.only(left: 40, right: 40, bottom: 50),
@@ -49,17 +50,7 @@ class _FindingLobbyScreenState extends State<FindingLobbyScreen> {
                     ),
                   ),
                   const SizedBox(height: 20,),
-
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Wrap(
-                      spacing: 30,
-                      children: [
-                        SingleLobbyScreen(),
-                        SingleLobbyScreen(),
-                      ],
-                    ),
-                  ),
+                  const ListLobbyScreen(),
                   const SizedBox(height: 40,),
                   Center(
                     child: ElevatedButton(

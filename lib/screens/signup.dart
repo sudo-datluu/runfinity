@@ -6,6 +6,7 @@ import 'package:runfinity/screens/login.dart';
 import 'package:runfinity/styles/app_colors.dart';
 import 'package:runfinity/widgets/app_text.dart';
 import 'package:runfinity/utils/form_validation.dart';
+import 'package:runfinity/widgets/custom_back_arrow.dart';
 import 'package:runfinity/widgets/login/login_input.dart';
 import 'package:runfinity/widgets/login/login_password_input.dart';
 import 'package:runfinity/widgets/login/other_login_options.dart';

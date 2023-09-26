@@ -20,7 +20,7 @@ class AppColors {
   static const destructiveDark = Color(0xffca0602);
   static const destructiveDarker = Color(0xff650301);
 
-  static const success = Color(0xff60b472);
+  static const success = Color(0xFF1C8641);
   static const successLighter = Color(0xffeffcf3);
   static const successLight = Color(0xff8de5ab);
   static const successDark = Color(0xff3e784c);
@@ -42,4 +42,8 @@ class AppColors {
   static const neutral750 = Color(0xFF2F3C50);
   static const neutral770 = Color(0xFF28333F);
   static const neutral800 = Color(0xff1f2937);
+  static const neutral850 = Color(0xff27292E);
+
+  static const lobbyBoxStart = Color(0x805100ff);
+  static const lobbyBoxEnd = Color(0x005100ff);
 }
